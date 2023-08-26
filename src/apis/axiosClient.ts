@@ -11,7 +11,7 @@ const timeout = 30 * 1000
 
 const baseURL = DEVELOPMENT === 'production' ? API_URL_PRODUCTION : API_URL_DEV
 
-export const client = axios.create({
+export const axiosClient = axios.create({
   baseURL,
   headers,
   timeout
@@ -49,10 +49,10 @@ const errorResponseInterceptor = async (error: any) => {
   return Promise.reject({ ...error })
 }
 
-client.interceptors.request.use(requestInterceptor, (error) => {
+axiosClient.interceptors.request.use(requestInterceptor, (error) => {
   return Promise.reject(error)
 })
 
-client.interceptors.request.use((response) => {
+axiosClient.interceptors.request.use((response) => {
   return response
 }, errorResponseInterceptor)

@@ -5,6 +5,16 @@
       "cancel": "Hủy",
       "delete": "Xóa",
       "save": "Lưu"
+    },
+    "text": {
+      "doNotHaveAnAccount": "Bạn chưa có tài khoản ?",
+      "doYouHaveAnAccount": "Bạn đã có tài khoản rồi ?",
+      "loginHere": "Đăng nhập tại đây !",
+      "registerHere": "Đăng ký tại đây !",
+      "selectGender": "Chọn giới tính !"
+    },
+    "heading": {
+      "authenticationGreeting": "Xin chào người đẹp, vui lòng đăng nhập để tận hưởng nào !"
     }
   }
 }

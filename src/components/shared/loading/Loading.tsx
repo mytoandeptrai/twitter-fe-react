@@ -9,10 +9,8 @@ const Loading = () => {
   const { theme } = useMyTheme()
   const loading = useSelector((state: RootState) => state.appState.loading)
 
-  const visible = loading.visible ? loading.visible : undefined
-
   return (
-    <StyledRoot visible={visible}>
+    <StyledRoot visible={loading.visible.toString()}>
       {loading.component ? loading.component : <ClipLoader color={theme.backgroundColor1} />}
     </StyledRoot>
   )
@@ -21,7 +19,7 @@ const Loading = () => {
 export default memo(Loading)
 
 const StyledRoot = styled.div<{
-  visible?: boolean
+  visible?: string
 }>`
   position: fixed;
   top: 0;
@@ -33,7 +31,8 @@ const StyledRoot = styled.div<{
   }};
   opacity: 0.5;
   display: ${({ visible }) => {
-    return visible ? 'flex' : 'none'
+    const flexOrNone = visible === 'true'
+    return flexOrNone ? 'flex' : 'none'
   }};
   align-items: center;
   justify-content: center;

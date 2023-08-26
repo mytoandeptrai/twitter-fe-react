@@ -1,10 +1,31 @@
-import { ELocalStorageKey } from '../constants'
+import { ELocalStorageKey, EUserQuery, LONG_STATE_TIME } from '@/constants'
 import { useLocalStorage } from './useLocalStorage'
 import { Subscription } from 'rxjs'
-import { EventBus, EventBusName } from '@/services'
-import { useEffect } from 'react'
+import { EventBus, EventBusName, useUserService } from '@/services'
+import { useEffect, useMemo } from 'react'
+import { useQuery } from '@tanstack/react-query'
+import { IUser } from '@/types'
 export const useApp = () => {
   const [accessToken, setAccessToken] = useLocalStorage(ELocalStorageKey.AccessToken, '')
+  const { getMe } = useUserService()
+
+  const getMeQuery = useQuery<IUser | undefined>([EUserQuery], getMe, {
+    staleTime: LONG_STATE_TIME,
+    retry: 0,
+    enabled: !!accessToken,
+    onError: () => {
+      localStorage.removeItem(ELocalStorageKey.AccessToken)
+    }
+  })
+
+  const isLoadingUser = useMemo(() => {
+    const hasAccessToken = !!accessToken
+    if (!hasAccessToken) {
+      return false
+    }
+
+    return getMeQuery?.isLoading
+  }, [getMeQuery?.isLoading, accessToken])
 
   const subscription = new Subscription()
 
@@ -32,7 +53,7 @@ export const useApp = () => {
   }, [])
 
   return {
-    user: {},
-    isLoadingUser: false
+    user: getMeQuery?.data,
+    isLoadingUser
   }
 }

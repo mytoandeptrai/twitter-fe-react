@@ -49,7 +49,7 @@ function App() {
     <React.Fragment>
       <ThemeProvider theme={theme}>
         <Loading />
-        {/* Add modal below  */}
+        {/* Add common modal below  */}
         {/* <Suspense fallback={<Loader />}>
           <Modal />
         </Suspense> */}

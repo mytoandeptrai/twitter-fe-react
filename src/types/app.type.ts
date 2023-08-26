@@ -1,5 +1,6 @@
 import { APP_DISPATCH_ACTIONS, EThemes } from '@/constants'
 import { IModalProps } from './modal.type'
+import { AnimatePresenceProps } from 'framer-motion'
 
 export type TScreenSize = 'DESKTOP' | 'TABLET' | 'MOBILE'
 
@@ -38,5 +39,9 @@ export type TAppState = {
 export type TAppDispatch = (action: TAppAction) => void
 
 export type TAppContextProps = {
+  children: React.ReactNode
+}
+
+export interface NewAnimatePresenceProps extends Omit<AnimatePresenceProps, 'children'> {
   children: React.ReactNode
 }

@@ -13,9 +13,15 @@ export interface IUser {
   coverPhoto: string
   storyAudience: number
   isThirdParty?: boolean
+  [key: string]: any
 }
 
 export interface ILogin {
   username: string
   password: string
+}
+
+export interface ILoginResponse {
+  user: IUser
+  accessToken: string
 }

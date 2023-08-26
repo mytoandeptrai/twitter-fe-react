@@ -5,6 +5,16 @@
       "cancel": "Cancel",
       "delete": "Delete",
       "save": "Save"
+    },
+    "text": {
+      "doNotHaveAnAccount": "Don't have an account?",
+      "doYouHaveAnAccount": "Do you have an account?",
+      "loginHere": "Login here !",
+      "registerHere": "Register here !",
+      "selectGender": "Please select a gender !"
+    },
+    "heading": {
+      "authenticationGreeting": "Welcome back, please login to your account !"
     }
   }
 }
