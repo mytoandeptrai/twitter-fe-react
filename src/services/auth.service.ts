@@ -9,6 +9,7 @@ export const useAuthService = () => {
   const queryClient = useQueryClient()
 
   const login = async (inputBody: ILogin): Promise<ILoginResponse | null> => {
+    console.log('input => ', inputBody);
     return tryCatchFn(async () => {
       const url = `${EEndpoints.Auth}/signin`
       const response = await axiosClient.post(url, inputBody)
