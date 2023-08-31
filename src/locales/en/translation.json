@@ -4,17 +4,50 @@
       "search": "Search",
       "cancel": "Cancel",
       "delete": "Delete",
-      "save": "Save"
+      "save": "Save",
+      "profile": "Profile",
+      "notifications": "Notifications",
+      "logout": "Logout"
     },
     "text": {
       "doNotHaveAnAccount": "Don't have an account?",
       "doYouHaveAnAccount": "Do you have an account?",
       "loginHere": "Login here !",
       "registerHere": "Register here !",
-      "selectGender": "Please select a gender !"
+      "selectGender": "Please select a gender !",
+      "whatOnYourMind": "What on your mind ?",
+      "male": "Male",
+      "female": "Female",
+      "other": "Other",
+      "everyone": "Everyone",
+      "followers": "Followers"
     },
     "heading": {
       "authenticationGreeting": "Welcome back, please login to your account !"
+    },
+    "routes": {
+      "home": "Home",
+      "search": "Search",
+      "bookmark": "Bookmark"
+    }
+  },
+  "pages": {
+    "home": "Welcome to your home page",
+    "profile": {
+      "profile": "Profile",
+      "media": "Media",
+      "liked-tweets": "Liked tweets"
+    },
+    "explore": {
+      "index": "Explore",
+      "popular-users": "Popular Users",
+      "latest-tweets": "Latest Tweets",
+      "latest-medias": "Latest Medias",
+      "popular-tweets": "Popular Tweets"
+    },
+    "bookmark": "Bookmark",
+    "tweet": {
+      "not-found": "Tweet not found"
     }
   }
 }

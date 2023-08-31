@@ -20,19 +20,19 @@ const GenderSelector = ({ defaultValue, onChange }: Props) => {
     return [
       {
         value: 0,
-        label: t('male'),
+        label: t('common.text.male'),
         id: uuid(),
         icon: <IoMdMale />
       },
       {
         value: 1,
-        label: t('female'),
+        label: t('common.text.female'),
         id: uuid(),
         icon: <IoMdFemale />
       },
       {
         value: 2,
-        label: t('other'),
+        label: t('common.text.other'),
         id: uuid(),
         icon: <IoMaleFemaleSharp />
       }

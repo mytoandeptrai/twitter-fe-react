@@ -1,4 +1,4 @@
-import { APP_DISPATCH_ACTIONS, EThemes } from '@/constants'
+import { APP_DISPATCH_ACTIONS, EMedia, EThemes } from '@/constants'
 import { IModalProps } from './modal.type'
 import { AnimatePresenceProps } from 'framer-motion'
 
@@ -44,4 +44,53 @@ export type TAppContextProps = {
 
 export interface NewAnimatePresenceProps extends Omit<AnimatePresenceProps, 'children'> {
   children: React.ReactNode
+}
+
+export interface BaseControlledRef {
+  show?: () => void
+  hide?: () => void
+}
+
+export interface ISize {
+  width: number | undefined
+  height: number | undefined
+}
+
+export interface IApiResponse<T = any> {
+  readonly data?: T
+  readonly total?: number
+  readonly error?: Error
+  readonly message?: string
+  readonly statusCode?: number
+}
+
+export interface IPaginationParams {
+  limit: number
+  page: number
+}
+
+export interface IPaginationParams {
+  limit: number
+  page: number
+}
+
+export interface IGetList<T> {
+  data: T[]
+  total: number
+}
+export interface IMedia {
+  id?: string
+  url: string
+  type?: EMedia
+  file?: File | null
+}
+
+export interface IInfinityListDataPage<T> {
+  data: T[]
+  total: number
+}
+
+export interface IInfinityListData<T> {
+  pages: IInfinityListDataPage<T>[]
+  pageParams: any[]
 }

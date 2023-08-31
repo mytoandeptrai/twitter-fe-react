@@ -1,3 +1,4 @@
+import { AudienceSelector } from './audience-selector'
 import { GenderSelector } from './gender-selector'
 
-export { GenderSelector }
+export { AudienceSelector, GenderSelector }

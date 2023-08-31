@@ -9,10 +9,9 @@ export const useApp = () => {
   const [accessToken, setAccessToken] = useLocalStorage(ELocalStorageKey.AccessToken, '')
   const { getMe } = useUserService()
 
-  const getMeQuery = useQuery<IUser | undefined>([EUserQuery], getMe, {
+  const getMeQuery = useQuery<IUser | undefined>([EUserQuery.GetMe], getMe, {
     staleTime: LONG_STATE_TIME,
     retry: 0,
-    enabled: !!accessToken,
     onError: () => {
       localStorage.removeItem(ELocalStorageKey.AccessToken)
     }

@@ -2,7 +2,6 @@ import { EFontSize } from '@/constants'
 import { useOnClickOutside } from '@/hooks'
 import { safeCallFn } from '@/utils'
 import React, { useCallback, useMemo, useRef, useState } from 'react'
-import { useTranslation } from 'react-i18next'
 import { styled } from 'styled-components'
 import { Dropdown } from '../drop-down'
 
@@ -18,13 +17,13 @@ type Props<T> = {
   onChange: (input: T) => void
   options: TOptions<T>[]
   renderValue?: (value: T) => React.ReactNode
+  text?: string
 }
 
-const BaseSelector = <T,>({ defaultValue, onChange: onChangeProp, options, renderValue }: Props<T>) => {
+const BaseSelector = <T,>({ defaultValue, options, text, renderValue, onChange: onChangeProp }: Props<T>) => {
   const [visibleDropdown, setVisibleDropdown] = useState<boolean>(false)
   const [value, setValue] = useState(defaultValue)
   const dropdownRef = useRef() as React.RefObject<HTMLDivElement>
-  const { t } = useTranslation()
 
   const toggleDropdown = () => setVisibleDropdown((isVisible) => !isVisible)
 
@@ -58,7 +57,7 @@ const BaseSelector = <T,>({ defaultValue, onChange: onChangeProp, options, rende
     if (!currentValue) {
       return (
         <React.Fragment>
-          <StyledSelectedItemText>{t('common.text.selectGender')}</StyledSelectedItemText>
+          <StyledSelectedItemText>{text}</StyledSelectedItemText>
         </React.Fragment>
       )
     }
@@ -69,7 +68,7 @@ const BaseSelector = <T,>({ defaultValue, onChange: onChangeProp, options, rende
         <StyledSelectedItemText>{currentValue?.label}</StyledSelectedItemText>
       </React.Fragment>
     )
-  }, [options, renderValue, t, value])
+  }, [options, renderValue, text, value])
 
   return (
     <Wrapper ref={dropdownRef}>
@@ -121,5 +120,6 @@ export const SelectedItemSelectionItem = styled.div`
     --size: 1.6rem;
     width: var(--size);
     height: var(--size);
+    transform: translateY(3px);
   }
 `

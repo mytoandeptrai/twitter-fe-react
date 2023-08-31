@@ -1,3 +1,6 @@
 export * from './app.type'
 export * from './modal.type'
 export * from './user.type'
+export * from './tweet.type'
+export * from './query.type'
+export * from './hash-tag.type'

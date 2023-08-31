@@ -12,7 +12,7 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 const UncontrolledInput = forwardRef<HTMLInputElement, Props>(
-  ({ icon = undefined, filter = undefined, label, ...otherProps }, ref) => {
+  ({ icon: Icon = undefined, filter = undefined, label, ...otherProps }, ref) => {
     const [value, setValue] = useState<any>('')
 
     const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -22,7 +22,7 @@ const UncontrolledInput = forwardRef<HTMLInputElement, Props>(
     return (
       <StyledRoot>
         <StyledLabel>
-          {label} {icon}
+          {label} {Icon}
         </StyledLabel>
         <StyledInput value={value} {...otherProps} onChange={onChange} ref={ref} />
       </StyledRoot>

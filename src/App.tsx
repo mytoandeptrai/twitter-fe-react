@@ -7,6 +7,8 @@ import React, { Suspense } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
 
+const CommonModal = React.lazy(() => import('@/components/ui/modal/common-modal/common-modal'))
+
 function App() {
   const { isLoadingUser } = useApp()
   const { theme } = useMyTheme()
@@ -21,6 +23,7 @@ function App() {
         <React.Fragment>
           {routes.map((route) => {
             const { Element, path, isLazy, isPrivate } = route
+
             const Component = isLazy ? (
               <Suspense fallback={<Loader />}>
                 <Element />
@@ -45,14 +48,19 @@ function App() {
     )
   }
 
+  const renderModal = () => {
+    return (
+      <Suspense fallback={<Loader />}>
+        <CommonModal />
+      </Suspense>
+    )
+  }
+
   return (
     <React.Fragment>
       <ThemeProvider theme={theme}>
         <Loading />
-        {/* Add common modal below  */}
-        {/* <Suspense fallback={<Loader />}>
-          <Modal />
-        </Suspense> */}
+        {renderModal()}
         {content}
       </ThemeProvider>
     </React.Fragment>

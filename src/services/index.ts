@@ -1,3 +1,7 @@
 export * from './auth.service'
 export * from './event-bus.service'
+export * from './hash-tag.service'
+export * from './query.service'
+export * from './tweet.service'
+export * from './upload.service'
 export * from './user.service'

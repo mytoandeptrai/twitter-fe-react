@@ -13,7 +13,11 @@ interface RoutesType {
 const ROUTES_PATH = {
   home: '/',
   auth: '/auth',
-  search: '/search'
+  search: '/search',
+  bookmark: '/bookmark',
+  explore: '/explore',
+  notifications: '/notifications',
+  profile: '/profile'
 }
 
 const routes: RoutesType[] = [
@@ -25,12 +29,14 @@ const routes: RoutesType[] = [
   {
     path: ROUTES_PATH.home,
     Element: NewsFeed,
-    isLazy: true
+    isLazy: true,
+    isPrivate: true
   },
   {
     path: ROUTES_PATH.search,
     Element: Search,
-    isLazy: true
+    isLazy: true,
+    isPrivate: true
   }
 ]
 

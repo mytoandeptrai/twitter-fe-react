@@ -10,7 +10,7 @@ const Loading = () => {
   const loading = useSelector((state: RootState) => state.appState.loading)
 
   return (
-    <StyledRoot visible={loading.visible.toString()}>
+    <StyledRoot visible={String(loading.visible)}>
       {loading.component ? loading.component : <ClipLoader color={theme.backgroundColor1} />}
     </StyledRoot>
   )

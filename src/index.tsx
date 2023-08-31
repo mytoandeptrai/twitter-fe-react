@@ -12,6 +12,7 @@ import { AppProvider } from '@/contexts'
 import App from '@/App'
 import { store } from '@/store'
 
+import 'react-image-lightbox/style.css'
 import './index.css'
 
 import '@/i18n'

@@ -2,7 +2,7 @@ import React from 'react'
 import { styled } from 'styled-components'
 import { AuthFormFields, AuthHeader } from './components'
 import { EAuthScreen, loginFields, registerFields, useAuth } from './hooks'
-import { CommonButton } from '@/components/shared'
+import { CommonButton } from '@/components'
 
 const Auth = () => {
   const { formRef, screen, isLoginScreen, onChangeScreen, onChangeGender, onSubmit } = useAuth()

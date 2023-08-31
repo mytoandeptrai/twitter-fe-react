@@ -1,5 +1,6 @@
 import { Navigate } from 'react-router-dom'
 import { ROUTES_PATH } from './routes.route'
+import { useUserService } from '@/services'
 
 type Props = {
   children: JSX.Element
@@ -15,9 +16,11 @@ type Props = {
  */
 const PrivateRoute = ({ children }: Props) => {
   /** TODO : Add Logic  to check if user has or not */
-  const user = true
+  const { getCurrentUser } = useUserService()
+  const user = getCurrentUser()
+  const hasUser = !!user?._id?.length
 
-  if (!user) return <Navigate to={ROUTES_PATH.auth} />
+  if (!hasUser) return <Navigate to={ROUTES_PATH.auth} />
 
   return children
 }

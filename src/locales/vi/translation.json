@@ -4,17 +4,50 @@
       "search": "Tìm kiếm",
       "cancel": "Hủy",
       "delete": "Xóa",
-      "save": "Lưu"
+      "save": "Lưu",
+      "profile": "Trang cá nhân",
+      "notifications": "Thông báo",
+      "logout": "Đăng xuất"
     },
     "text": {
       "doNotHaveAnAccount": "Bạn chưa có tài khoản ?",
       "doYouHaveAnAccount": "Bạn đã có tài khoản rồi ?",
       "loginHere": "Đăng nhập tại đây !",
       "registerHere": "Đăng ký tại đây !",
-      "selectGender": "Chọn giới tính !"
+      "selectGender": "Chọn giới tính !",
+      "whatOnYourMind": "What on your mind ?",
+      "male": "Male",
+      "female": "Female",
+      "other": "Other",
+      "everyone": "Everyone",
+      "followers": "Followers"
     },
     "heading": {
       "authenticationGreeting": "Xin chào người đẹp, vui lòng đăng nhập để tận hưởng nào !"
+    },
+    "routes": {
+      "home": "Home",
+      "search": "Search",
+      "bookmark": "Bookmark"
+    }
+  },
+  "pages": {
+    "home": "Trang chủ",
+    "profile": {
+      "profile": "Trang cá nhân",
+      "media": "Ảnh",
+      "liked-tweets": "Bài đã like"
+    },
+    "explore": {
+      "index": "Khám phám",
+      "popular-users": "Popular Users",
+      "latest-tweets": "Latest Tweets",
+      "latest-medias": "Latest Medias",
+      "popular-tweets": "Popular Tweets"
+    },
+    "bookmark": "Bookmark",
+    "tweet": {
+      "not-found": "Ko tìm thấy bài nào cả !"
     }
   }
 }

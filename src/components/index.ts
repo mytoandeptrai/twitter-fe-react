@@ -1,3 +1,2 @@
-import { Loader, Loading } from './shared'
-
-export { Loader, Loading }
+export * from './shared'
+export * from './ui'
