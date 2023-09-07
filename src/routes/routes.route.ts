@@ -17,7 +17,8 @@ const ROUTES_PATH = {
   bookmark: '/bookmark',
   explore: '/explore',
   notifications: '/notifications',
-  profile: '/profile'
+  profile: '/profile',
+  hashTags: '/hashtag'
 }
 
 const routes: RoutesType[] = [

@@ -119,7 +119,6 @@ export const useAuth = () => {
       await mutationMapper[screen].mutateAsync(input, mutationOptions)
       await refreshGetMe()
       navigate(ROUTES_PATH.home)
-      console.log('file vao day')
     } catch (error) {
     } finally {
       dispatch(

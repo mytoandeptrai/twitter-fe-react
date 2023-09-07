@@ -1,5 +1,5 @@
-import { PageMetaData } from '@/components'
-import { EFormType } from '@/constants'
+import { InfinityTweetList, PageMetaData } from '@/components'
+import { EFormType, ETweetQuery } from '@/constants'
 import { TweetForm } from '@/features'
 import { LayoutTwoSideBar, LayoutWithHeader } from '@/layouts'
 import React from 'react'
@@ -18,6 +18,7 @@ const NewFeeds = () => {
             <React.Fragment>
               {/* TODO : Implement Story List  */}
               <TweetForm type={EFormType.Create} />
+              <InfinityTweetList queryKey={ETweetQuery.GetLatestTweets} />
             </React.Fragment>
           }
           rightSideBar={<>RightSidebar</>}

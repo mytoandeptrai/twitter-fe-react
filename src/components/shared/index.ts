@@ -3,7 +3,7 @@ import { BaseSelector, FileInput, LinkTextArea, UncontrolledInput } from './form
 import { ImageWithPlaceHolder } from './image'
 import { Loader } from './loader'
 import { Loading } from './loading'
-import { AudienceSelector, GenderSelector } from './selectors'
+import { AudienceSelector, GenderSelector, TweetActionSelector } from './selectors'
 import { PageMetaData } from './seo'
 import { StyledContainer, StyledFlex, StyledShake, StyledSpin } from './style'
 
@@ -22,5 +22,6 @@ export {
   StyledFlex,
   StyledShake,
   StyledSpin,
-  UncontrolledInput
+  UncontrolledInput,
+  TweetActionSelector
 }

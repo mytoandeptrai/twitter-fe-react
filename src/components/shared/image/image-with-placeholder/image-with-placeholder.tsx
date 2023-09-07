@@ -1,12 +1,6 @@
 import { DefaultAvatar } from '@/constants'
-import React, { memo, useEffect, useState } from 'react'
-import { ClipLoader } from 'react-spinners'
+import React, { forwardRef, memo, useState } from 'react'
 import { styled } from 'styled-components'
-
-interface IInitialSrc {
-  src: string
-  loading: boolean
-}
 
 type Props = {
   src: string
@@ -15,46 +9,21 @@ type Props = {
   customStyles?: string
 }
 
-const TIMEOUT = 5000
+const ImageWithPlaceHolder = forwardRef(
+  ({ alt, src, customStyles = '', defaultSrc = DefaultAvatar }: Props, ref: any) => {
+    const [fallback, setFallback] = useState<string>('')
 
-const ImageWithPlaceHolder = ({ alt, src, customStyles = '', defaultSrc = DefaultAvatar }: Props) => {
-  const [initialSrc, setInitialSrc] = useState<IInitialSrc>({
-    src,
-    loading: true
-  })
-
-  const { loading } = initialSrc
-
-  useEffect(() => {
-    if (!loading) return
-
-    const timeout = setTimeout(() => {
-      setInitialSrc((prev) => ({ ...prev, src: defaultSrc }))
-    }, TIMEOUT)
-
-    return () => {
-      clearTimeout(timeout)
+    const handleError = () => {
+      setFallback(fallback)
     }
-  }, [defaultSrc, loading])
 
-  return (
-    <React.Fragment>
-      {loading && <ClipLoader />}
-      <StyledImage
-        src={src}
-        alt={alt}
-        hidden={String(loading)}
-        styles={customStyles}
-        onLoad={() => {
-          setInitialSrc((prev) => ({ ...prev, loading: false }))
-        }}
-        onError={() => {
-          setInitialSrc({ loading: false, src: defaultSrc })
-        }}
-      />
-    </React.Fragment>
-  )
-}
+    return (
+      <React.Fragment>
+        <StyledImage src={src} alt={alt} styles={customStyles} ref={ref} onError={handleError} loading='lazy' />
+      </React.Fragment>
+    )
+  }
+)
 
 export default memo(ImageWithPlaceHolder)
 
@@ -65,8 +34,6 @@ const StyledImage = styled('img')<{
   width: 100%;
   height: 100%;
   object-fit: cover;
-
-  ${({ hidden }) => hidden === 'true' && `display: none`}
 
   ${(props) => props?.styles}
 `

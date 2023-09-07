@@ -1,13 +1,16 @@
 import { ELocalStorageKey, EUserQuery, LONG_STATE_TIME } from '@/constants'
-import { useLocalStorage } from './useLocalStorage'
-import { Subscription } from 'rxjs'
 import { EventBus, EventBusName, useUserService } from '@/services'
-import { useEffect, useMemo } from 'react'
-import { useQuery } from '@tanstack/react-query'
 import { IUser } from '@/types'
+import { useQuery, useQueryClient } from '@tanstack/react-query'
+import { useEffect, useMemo } from 'react'
+import { Subscription } from 'rxjs'
+import { useLocalStorage } from './useLocalStorage'
+
 export const useApp = () => {
-  const [accessToken, setAccessToken] = useLocalStorage(ELocalStorageKey.AccessToken, '')
   const { getMe } = useUserService()
+  const queryClient = useQueryClient()
+
+  const [accessToken, setAccessToken] = useLocalStorage(ELocalStorageKey.AccessToken, '')
 
   const getMeQuery = useQuery<IUser | undefined>([EUserQuery.GetMe], getMe, {
     staleTime: LONG_STATE_TIME,
@@ -33,6 +36,7 @@ export const useApp = () => {
       if (event.type === EventBusName.Logout) {
         if (accessToken) {
           setAccessToken('')
+          queryClient.invalidateQueries([EUserQuery.GetMe])
         }
       }
     })

@@ -36,3 +36,24 @@ export enum EViewMode {
   Grid = 'grid',
   None = 'none'
 }
+
+export enum EProfileType {
+  Home = 'home',
+  Liked = 'liked',
+  Medias = 'medias'
+}
+
+export enum EUserListType {
+  Liked = 'liked',
+  Saved = 'saved',
+  Retweeted = 'retweeted',
+  Following = 'following',
+  Followed = 'followed'
+}
+
+export enum EInteractionButton {
+  Like = 'like',
+  Save = 'save',
+  Comment = 'comment',
+  Share = 'share'
+}

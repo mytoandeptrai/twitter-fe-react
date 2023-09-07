@@ -40,6 +40,7 @@ const LinkTextArea = ({ value, onChange: onChangeProps, placeholder = 'common.te
           <StyledRemoveLinkBtn onClick={onRemoveLinks}>
             <BsTrash />
           </StyledRemoveLinkBtn>
+          <StyledLinkPreview>{/* <LinkPreview url={urls[urls.length - 1]} /> */}</StyledLinkPreview>
         </StyledLinkPreviewWrapper>
       )}
     </StyledRoot>
@@ -66,6 +67,11 @@ const StyledLinkPreviewWrapper = styled.div`
   text-align: center;
   background: gray;
   color: #fff;
+`
+
+const StyledLinkPreview = styled.div`
+  width: 100%;
+  height: 100%;
 `
 
 const StyledRemoveLinkBtn = styled.button`

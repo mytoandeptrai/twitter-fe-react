@@ -1,6 +1,7 @@
 import { EMedia } from '@/constants'
 import { EventBusName, onPushEventBusHandler } from '@/services'
 import { IMedia } from '@/types'
+import { SyntheticEvent } from 'react'
 import { v4 as uuid } from 'uuid'
 
 export const safeCallFn = (fn: Function, ...args: any[]) => {
@@ -57,3 +58,30 @@ export const removeUrlsInData = (str: string): string => {
   const filteredText = filteredWords ? filteredWords.join(' ') : ''
   return filteredText
 }
+
+export const isUUID = (str: string): boolean => {
+  const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i
+  return uuidRegex.test(str)
+}
+
+export const calcDiffTimeString = (date: Date): string => {
+  if (!(date instanceof Date)) {
+    date = new Date(date)
+  }
+
+  const diff = Math.floor((Date.now() - date.getTime()) / 1000)
+
+  if (diff < 60) {
+    return `${diff} seconds ago`
+  }
+  if (diff < 3600) {
+    return `${Math.floor(diff / 60)} minutes ago`
+  }
+  if (diff < 86400) {
+    return `${Math.floor(diff / 3600)} hours ago`
+  }
+
+  return date.toLocaleDateString()
+}
+
+export const stopPropagation = (e: SyntheticEvent) => e.stopPropagation()

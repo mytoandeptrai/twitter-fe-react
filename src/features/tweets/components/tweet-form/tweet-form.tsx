@@ -7,7 +7,7 @@ import React, { memo, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { styled } from 'styled-components'
 import { useTweetForm } from './hooks'
-import TweetFormMedia from './tweet-form-media'
+import { TweetFormMedia } from './tweet-form-media'
 
 type TCreateTweetFormProps = {
   type: EFormType.Create
@@ -67,7 +67,7 @@ const TweetForm = (props: Props) => {
   }, [props.type, t])
 
   const content = useMemo(() => {
-    return props.type === EFormType.Create ? 'tweet.create' : 'tweet.update'
+    return props.type === EFormType.Create ? 'pages.tweet.create' : 'pages.tweet.update'
   }, [props.type])
 
   return (

@@ -7,7 +7,13 @@
       "save": "Lưu",
       "profile": "Trang cá nhân",
       "notifications": "Thông báo",
-      "logout": "Đăng xuất"
+      "logout": "Đăng xuất",
+      "like": "Like",
+      "comment": "Comment",
+      "retweeted": "Retweeted",
+      "liked": "Liked",
+      "saved": "Saved",
+      "retweet": "Retweet"
     },
     "text": {
       "doNotHaveAnAccount": "Bạn chưa có tài khoản ?",
@@ -47,7 +53,14 @@
     },
     "bookmark": "Bookmark",
     "tweet": {
-      "not-found": "Ko tìm thấy bài nào cả !"
+      "not-found": "Ko tìm thấy bài nào cả !",
+      "not-any-found": "No any tweet found",
+      "not-popular-found": "No popular tweets found",
+      "not-bookmark-found": "No bookmark tweets found",
+      "create": "Create",
+      "update": "Update",
+      "delete": "Delete",
+      "report": "Report"
     }
   }
 }

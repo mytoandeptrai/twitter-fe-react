@@ -1,6 +1,12 @@
 import { axiosClient } from '@/apis'
 import { DEFAULT_LIST_LIMIT, SORT_STALE_TIME } from '@/constants'
-import { IGetList, IPaginationParams, IQueryInfinityListParams, IQueryPaginationInput } from '@/types'
+import {
+  IGetList,
+  IPaginationParams,
+  IQueryInfinityListParams,
+  IQueryPageInfinityParams,
+  IQueryPaginationInput
+} from '@/types'
 
 const getList = async <T>(endpoint: string, pageParam = 0, configParams = {}): Promise<IGetList<T>> => {
   const optionsParams = {
@@ -43,7 +49,7 @@ const flattenInfinityList = <T>(data: IQueryInfinityListParams<T>): T[] => {
     return []
   }
 
-  return (data?.pages?.flat(Infinity) as T[]) || []
+  return data?.pages?.reduce((res: T[], curr: IQueryPageInfinityParams<T>) => [...res, ...curr.data], [])
 }
 
 export { getList, generateInfinityQueryListConfig, getPaginationFromInput, flattenInfinityList }

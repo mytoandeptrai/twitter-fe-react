@@ -13,6 +13,8 @@ import App from '@/App'
 import { store } from '@/store'
 
 import 'react-image-lightbox/style.css'
+import 'react-loading-skeleton/dist/skeleton.css'
+import 'react-responsive-carousel/lib/styles/carousel.min.css'
 import './index.css'
 
 import '@/i18n'

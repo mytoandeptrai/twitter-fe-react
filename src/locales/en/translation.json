@@ -7,7 +7,13 @@
       "save": "Save",
       "profile": "Profile",
       "notifications": "Notifications",
-      "logout": "Logout"
+      "logout": "Logout",
+      "like": "Like",
+      "comment": "Comment",
+      "retweeted": "Retweeted",
+      "liked": "Liked",
+      "saved": "Saved",
+      "retweet": "Retweet"
     },
     "text": {
       "doNotHaveAnAccount": "Don't have an account?",
@@ -47,7 +53,21 @@
     },
     "bookmark": "Bookmark",
     "tweet": {
-      "not-found": "Tweet not found"
+      "not-found": "Tweet not found",
+      "not-latest-found": "No latest tweet found",
+      "not-popular-found": "No popular tweets found",
+      "not-bookmark-found": "No bookmark tweets found",
+      "create": "Create",
+      "update": "Update",
+      "delete": "Delete",
+      "report": "Report",
+      "edit": "Edit",
+      "delete_confirm": "Do you want to delete this",
+      "heading": {
+        "userLikedTweet": "User liked this tweet",
+        "userSavedTweet": "User saved this tweet",
+        "userRetweetedTweet": "User retweeted this tweet"
+      }
     }
   }
 }
