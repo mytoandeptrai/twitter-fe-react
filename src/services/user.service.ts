@@ -26,7 +26,6 @@ export const useUserService = () => {
   const getUser = useCallback(async ({ queryKey }: QueryFunctionContext) => {
     tryCatchFn<IUser>(async () => {
       const [, id] = queryKey
-      console.log('🚀 ~ file: user.service.ts:29 ~ tryCatchFn<IUser> ~ queryKey:', queryKey)
       const url = `${EEndpoints.User}/${id}`
       const response = await axiosClient.get(url)
       const user = new UserModel(response?.data?.data as IUser).getData()
