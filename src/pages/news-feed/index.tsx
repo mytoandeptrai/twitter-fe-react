@@ -1,11 +1,11 @@
 import { InfinityTweetList, PageMetaData } from '@/components'
 import { EFormType, ETweetQuery } from '@/constants'
-import { PopularTagList, TweetForm } from '@/features'
+import { PopularTagList, StoryList, TweetForm } from '@/features'
 import { LayoutTwoSideBar, LayoutWithHeader } from '@/layouts'
-import React from 'react'
+import React, { FC } from 'react'
 import { useTranslation } from 'react-i18next'
 
-const NewFeeds = () => {
+const NewFeeds: FC = () => {
   const { t } = useTranslation()
 
   return (
@@ -16,7 +16,7 @@ const NewFeeds = () => {
           leftSideBar={<>LeftSidebar</>}
           content={
             <React.Fragment>
-              {/* TODO : Implement Story List  */}
+              <StoryList />
               <TweetForm type={EFormType.Create} />
               <InfinityTweetList queryKey={ETweetQuery.GetLatestTweets} />
             </React.Fragment>

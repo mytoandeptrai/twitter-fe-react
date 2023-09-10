@@ -69,11 +69,6 @@ export interface IPaginationParams {
   page: number
 }
 
-export interface IPaginationParams {
-  limit: number
-  page: number
-}
-
 export interface IGetList<T> {
   data: T[]
   total: number

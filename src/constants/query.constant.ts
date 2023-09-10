@@ -40,3 +40,7 @@ export enum EHashTagQuery {
   GetPopularTags = 'GetPopularTags',
   UpdateHashTag = 'UpdateHashTag'
 }
+
+export enum EStoryQuery {
+  GetStories = 'GetStories'
+}
