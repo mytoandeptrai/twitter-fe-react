@@ -1,5 +1,5 @@
 import { CommonButton } from './button'
-import { BaseSelector, FileInput, LinkTextArea, UncontrolledInput } from './form'
+import { BaseSelector, ControlledInput, FileInput, LinkTextArea, UncontrolledInput } from './form'
 import { ImageWithPlaceHolder } from './image'
 import { Loader } from './loader'
 import { Loading } from './loading'
@@ -23,5 +23,6 @@ export {
   StyledShake,
   StyledSpin,
   UncontrolledInput,
-  TweetActionSelector
+  TweetActionSelector,
+  ControlledInput
 }

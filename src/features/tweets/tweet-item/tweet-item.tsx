@@ -6,6 +6,8 @@ import { TweetItemSkeleton } from './tweet-item-skeleton'
 import { TweetItemHeader } from './tweet-item-header'
 import { TweetItemContent } from './tweet-item-content'
 import { TweetItemInteraction } from './tweet-item-interaction'
+import { isUUID } from '@/utils'
+import { TweetItemComments } from './tweet-item-comments'
 
 type Props = {
   tweet: ITweet
@@ -24,6 +26,7 @@ const TweetItem = ({ tweet, isLoading = false, style }: Props) => {
       <div>
         <TweetItemContent tweet={tweet} />
         <TweetItemInteraction tweet={tweet} />
+        {tweet?._id && !isUUID(tweet?._id) && <TweetItemComments tweetId={tweet?._id} />}
       </div>
     </StyledRoot>
   )

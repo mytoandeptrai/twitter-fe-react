@@ -44,3 +44,9 @@ export enum EHashTagQuery {
 export enum EStoryQuery {
   GetStories = 'GetStories'
 }
+
+export enum ECommentQuery {
+  GetTweetComments = 'GetTweetComments',
+  CreateComment = 'CreateComment',
+  ReactComment = 'ReactComment'
+}

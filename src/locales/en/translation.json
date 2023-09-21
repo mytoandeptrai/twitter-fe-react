@@ -13,7 +13,12 @@
       "retweeted": "Retweeted",
       "liked": "Liked",
       "saved": "Saved",
-      "retweet": "Retweet"
+      "retweet": "Retweet",
+      "loadMore": "Load More",
+      "liked-lowercase": "liked",
+      "like-lowercase": "like",
+      "likes-lowercase": "likes",
+      "reply-lowercase": "reply"
     },
     "text": {
       "doNotHaveAnAccount": "Don't have an account?",

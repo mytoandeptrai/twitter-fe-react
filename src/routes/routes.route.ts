@@ -2,6 +2,7 @@ import React from 'react'
 const Auth = React.lazy(() => import('@/pages/auth'))
 const NewsFeed = React.lazy(() => import('@/pages/news-feed'))
 const Search = React.lazy(() => import('@/pages/search'))
+const CreateStory = React.lazy(() => import('@/pages/story'))
 
 interface RoutesType {
   path: string
@@ -18,7 +19,11 @@ const ROUTES_PATH = {
   explore: '/explore',
   notifications: '/notifications',
   profile: '/profile',
-  hashTags: '/hashtag'
+  hashTags: '/hashtag',
+  tweet: '/tweet',
+  story: {
+    create: '/story/create'
+  }
 }
 
 const routes: RoutesType[] = [
@@ -38,6 +43,11 @@ const routes: RoutesType[] = [
     Element: Search,
     isLazy: true,
     isPrivate: true
+  },
+  {
+    path: ROUTES_PATH.story.create,
+    Element: CreateStory,
+    isLazy: true
   }
 ]
 

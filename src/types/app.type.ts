@@ -49,6 +49,7 @@ export interface NewAnimatePresenceProps extends Omit<AnimatePresenceProps, 'chi
 export interface BaseControlledRef {
   show?: () => void
   hide?: () => void
+  visible?: boolean
 }
 
 export interface ISize {

@@ -3,7 +3,8 @@ import { Subject } from 'rxjs'
 export enum EventBusName {
   Logout = 'LOGOUT',
   Login = 'LOGIN',
-  Error = 'ERROR'
+  Error = 'ERROR',
+  CreateNotification = 'CREATE_NOTIFICATION'
 }
 
 export interface BaseEventType {

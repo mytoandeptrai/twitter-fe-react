@@ -34,6 +34,15 @@ export const initMediaFromUrl = (url: string): IMedia => {
   }
 }
 
+export const initMediaFromFile = (file: File): IMedia => {
+  return {
+    id: uuid(),
+    file,
+    type: file?.type?.includes(EMedia.Video) ? EMedia.Video : EMedia.Image,
+    url: URL.createObjectURL(file)
+  }
+}
+
 export const extractMetadata = (
   body: string
 ): {
@@ -104,4 +113,15 @@ export const nFormatter = (num: number, digits = 2): string => {
       return num >= item.value
     })
   return item ? (num / item.value).toFixed(digits).replace(rx, '$1') + item.symbol : '0'
+}
+
+/**
+ * Init a model with the _id field from string
+ */
+export const transformFieldToObjectWithId = <T>(field: keyof T, data: T): void => {
+  if (typeof data[field] === 'string') {
+    data[field] = {
+      _id: data[field]
+    } as unknown as T[keyof T]
+  }
 }

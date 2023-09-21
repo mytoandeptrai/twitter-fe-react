@@ -13,7 +13,8 @@
       "retweeted": "Retweeted",
       "liked": "Liked",
       "saved": "Saved",
-      "retweet": "Retweet"
+      "retweet": "Retweet",
+      "loadMore": "Load More"
     },
     "text": {
       "doNotHaveAnAccount": "Bạn chưa có tài khoản ?",

@@ -8,6 +8,7 @@ import { FiRefreshCw } from 'react-icons/fi'
 import styled, { css } from 'styled-components'
 import { useTweetItemInteraction } from './hooks'
 import { UserCard } from '@/features/users'
+import { CreateCommentForm } from '@/features/comments'
 
 const DEFAULT_USER_VISUAL = 400
 
@@ -90,6 +91,7 @@ const TweetItemInteraction = ({ tweet }: Props) => {
         {renderTweetSummary()}
         {renderTweetGroupButton()}
       </StyledRoot>
+      <CreateCommentForm tweet={tweet} />
     </React.Fragment>
   )
 }
