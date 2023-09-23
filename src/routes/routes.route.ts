@@ -3,6 +3,7 @@ const Auth = React.lazy(() => import('@/pages/auth'))
 const NewsFeed = React.lazy(() => import('@/pages/news-feed'))
 const Search = React.lazy(() => import('@/pages/search'))
 const CreateStory = React.lazy(() => import('@/pages/story'))
+const HashTag = React.lazy(() => import('@/pages/hashtag'))
 
 interface RoutesType {
   path: string
@@ -47,6 +48,11 @@ const routes: RoutesType[] = [
   {
     path: ROUTES_PATH.story.create,
     Element: CreateStory,
+    isLazy: true
+  },
+  {
+    path: `${ROUTES_PATH.hashTags}/:hashTag`,
+    Element: HashTag,
     isLazy: true
   }
 ]

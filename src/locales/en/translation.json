@@ -59,6 +59,13 @@
       "popular-tweets": "Popular Tweets"
     },
     "bookmark": "Bookmark",
+    "search": "Searching your news",
+    "hashtag": {
+      "title": "Hashtag",
+      "text": {
+        "allTweetByHashtag": "All Tweets By Hashtag"
+      }
+    },
     "tweet": {
       "not-found": "Tweet not found",
       "not-latest-found": "No latest tweet found",

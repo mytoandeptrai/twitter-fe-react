@@ -18,7 +18,7 @@ export const useInfinityTweet = (queryKey: string) => {
   const getUserTweetsStrategies: IPartialTweetStrategies = {
     [ETweetQuery.GetTweetByUser]: getUserTweets,
     [ETweetQuery.GetLikedTweetByUser]: getUserLikedTweets,
-    [ETweetQuery.GetTweetsByHashtag]: getTweetsByHashTag
+    [ETweetQuery.GetTweetByHashTag]: getTweetsByHashTag
   }
 
   if (!queryKey.includes(',')) {

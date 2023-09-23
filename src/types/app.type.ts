@@ -90,3 +90,10 @@ export interface IInfinityListData<T> {
   pages: IInfinityListDataPage<T>[]
   pageParams: any[]
 }
+
+export enum ESearchType {
+  Tweet = 'tweet',
+  User = 'user',
+  Hashtag = 'hashtag',
+  Comment = 'comment'
+}
