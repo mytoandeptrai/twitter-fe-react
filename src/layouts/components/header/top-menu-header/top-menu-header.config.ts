@@ -24,7 +24,6 @@ const generateMenuLinks = (t: TFunction, currentUser: IUser | undefined) => {
       path: ROUTES_PATH.home,
       id: uuid()
     },
-
     {
       name: t('common.routes.search'),
       path: ROUTES_PATH.search,

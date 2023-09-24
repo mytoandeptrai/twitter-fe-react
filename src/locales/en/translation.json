@@ -18,7 +18,8 @@
       "liked-lowercase": "liked",
       "like-lowercase": "like",
       "likes-lowercase": "likes",
-      "reply-lowercase": "reply"
+      "reply-lowercase": "reply",
+      "explore": "Explore"
     },
     "text": {
       "doNotHaveAnAccount": "Don't have an account?",
@@ -41,7 +42,8 @@
     "routes": {
       "home": "Home",
       "search": "Search",
-      "bookmark": "Bookmark"
+      "bookmark": "Bookmark",
+      "explore": "Explore"
     }
   },
   "pages": {

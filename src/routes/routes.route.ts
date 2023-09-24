@@ -4,6 +4,8 @@ const NewsFeed = React.lazy(() => import('@/pages/news-feed'))
 const Search = React.lazy(() => import('@/pages/search'))
 const CreateStory = React.lazy(() => import('@/pages/story'))
 const HashTag = React.lazy(() => import('@/pages/hashtag'))
+const TweetDetail = React.lazy(() => import('@/pages/tweet-detail'))
+const Explore = React.lazy(() => import('@/pages/explore'))
 
 interface RoutesType {
   path: string
@@ -40,6 +42,11 @@ const routes: RoutesType[] = [
     isPrivate: true
   },
   {
+    path: ROUTES_PATH.explore,
+    Element: Explore,
+    isLazy: true
+  },
+  {
     path: ROUTES_PATH.search,
     Element: Search,
     isLazy: true,
@@ -48,6 +55,11 @@ const routes: RoutesType[] = [
   {
     path: ROUTES_PATH.story.create,
     Element: CreateStory,
+    isLazy: true
+  },
+  {
+    path: `${ROUTES_PATH.tweet}/:tweetId`,
+    Element: TweetDetail,
     isLazy: true
   },
   {

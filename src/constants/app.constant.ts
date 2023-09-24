@@ -57,3 +57,10 @@ export enum EInteractionButton {
   Comment = 'comment',
   Share = 'share'
 }
+
+export enum EExploreType {
+  PopularUser = 'popular-users',
+  LatestTweets = 'latest-tweets',
+  LatestMedias = 'latest-medias',
+  PopularTweets = 'popular-tweets'
+}

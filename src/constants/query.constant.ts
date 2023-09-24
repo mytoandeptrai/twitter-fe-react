@@ -1,5 +1,6 @@
 export const SORT_STALE_TIME = 60 * 60 * 1000 // 1 hour
 export const LONG_STATE_TIME = 60 * 60 * 1000 * 24 // 1 day
+export const SHORT_EXP_TIME = 1000 * 60 * 5 // 5 minutes
 export const DEFAULT_LIST_LIMIT = 20
 
 export enum EAuthQuery {

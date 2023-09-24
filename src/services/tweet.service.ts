@@ -59,6 +59,32 @@ export const useTweetService = () => {
     }
   }
 
+  const getTweet = async ({ queryKey }: QueryFunctionContext) => {
+    return tryCatchFn<ITweet>(async () => {
+      const [, id] = queryKey
+      const url = `${EEndpoints.Tweet}/${id}`
+      const response = await axiosClient.get(url)
+      return new TweetModel(response?.data?.data).getData()
+    })
+  }
+
+  const getMedias = (limit: number) => {
+    return ({ pageParam }: QueryFunctionContext) => {
+      const url = `${EEndpoints.Tweet}/medias`
+      const response = getList<ITweet>(url, pageParam, { limit })
+      return response
+    }
+  }
+
+  const getUserMedias = (limit: number) => {
+    return ({ queryKey, pageParam }: QueryFunctionContext) => {
+      const [, userId] = queryKey
+      const url = `${EEndpoints.Tweet}/user-medias/${userId}`
+      const response = getList<ITweet>(url, pageParam, { limit })
+      return response
+    }
+  }
+
   const createTweet = async (newTweet: ICreateTweetDTO): Promise<ITweet | undefined> => {
     try {
       const url = `${EEndpoints.Tweet}`
@@ -133,12 +159,17 @@ export const useTweetService = () => {
   const reportTweetMutation = useMutation([ETweetQuery.ReportTweet], reportTweet)
 
   return {
+    getTweet,
     getLatestTweets,
     getPopularTweets,
     getSavedTweets,
     getTweetsByHashTag,
+
     getUserTweets,
     getUserLikedTweets,
+    getUserMedias,
+
+    getMedias,
 
     createTweetMutation,
     updateTweetMutation,
