@@ -6,6 +6,7 @@ const CreateStory = React.lazy(() => import('@/pages/story'))
 const HashTag = React.lazy(() => import('@/pages/hashtag'))
 const TweetDetail = React.lazy(() => import('@/pages/tweet-detail'))
 const Explore = React.lazy(() => import('@/pages/explore'))
+const Bookmark = React.lazy(() => import('@/pages/bookmark'))
 
 interface RoutesType {
   path: string
@@ -45,6 +46,12 @@ const routes: RoutesType[] = [
     path: ROUTES_PATH.explore,
     Element: Explore,
     isLazy: true
+  },
+  {
+    path: ROUTES_PATH.bookmark,
+    Element: Bookmark,
+    isLazy: true,
+    isPrivate: true
   },
   {
     path: ROUTES_PATH.search,

@@ -12,7 +12,7 @@ export const useInfinityTweet = (queryKey: string) => {
   const getTweetsStrategies: IPartialTweetStrategies = {
     [ETweetQuery.GetLatestTweets]: getLatestTweets,
     [ETweetQuery.GetPopularTweets]: getPopularTweets,
-    [ETweetQuery.GetSavedTweets]: getSavedTweets
+    [ETweetQuery.GetBookmarkTweets]: getSavedTweets
   }
 
   const getUserTweetsStrategies: IPartialTweetStrategies = {
