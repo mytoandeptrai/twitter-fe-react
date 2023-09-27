@@ -64,3 +64,9 @@ export enum EExploreType {
   LatestMedias = 'latest-medias',
   PopularTweets = 'popular-tweets'
 }
+
+export const MASONRY_CONFIG_BREAKPOINTS = {
+  default: 3,
+  700: 2,
+  500: 1
+}

@@ -16,7 +16,7 @@ const TopMenuHeader = () => {
   }, [t, currentUser])
 
   const activeItemLink = useCallback((locationPathName: string, itemPathName: string): string => {
-    const isSameLink = locationPathName === itemPathName
+    const isSameLink = locationPathName === itemPathName || itemPathName.split('#').includes(locationPathName)
     return String(isSameLink)
   }, [])
 

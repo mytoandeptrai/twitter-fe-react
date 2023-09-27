@@ -97,3 +97,14 @@ export enum ESearchType {
   Hashtag = 'hashtag',
   Comment = 'comment'
 }
+
+export interface IOptionSidebar<T> {
+  name: string
+  id: string
+  icon?: JSX.Element
+  value: T
+}
+
+export interface IMediaWithTweetId extends IMedia {
+  tweetId: string
+}

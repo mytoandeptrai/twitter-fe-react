@@ -1,3 +1,4 @@
+import { MediaCard } from './media-card'
 import { MediaViewer } from './media-viewer'
 
-export { MediaViewer }
+export { MediaCard, MediaViewer }

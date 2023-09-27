@@ -1,3 +1,4 @@
+import { EExploreType } from '@/constants'
 import { ROUTES_PATH } from '@/routes'
 import { IUser } from '@/types'
 import { TFunction } from 'i18next'
@@ -22,6 +23,11 @@ const generateMenuLinks = (t: TFunction, currentUser: IUser | undefined) => {
     {
       name: t('common.routes.home'),
       path: ROUTES_PATH.home,
+      id: uuid()
+    },
+    {
+      name: t('common.routes.explore'),
+      path: `${ROUTES_PATH.explore}#${EExploreType.LatestTweets}`,
       id: uuid()
     },
     {
