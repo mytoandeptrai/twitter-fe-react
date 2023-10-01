@@ -19,7 +19,9 @@
       "like-lowercase": "like",
       "likes-lowercase": "likes",
       "reply-lowercase": "reply",
-      "explore": "Explore"
+      "explore": "Explore",
+      "follow": "Follow",
+      "unFollow": "UnFollow"
     },
     "text": {
       "doNotHaveAnAccount": "Don't have an account?",
@@ -34,6 +36,7 @@
       "everyone": "Everyone",
       "followers": "Followers",
       "popular-tags": "Popular Tags",
+      "popular-users": "Who to follow?",
       "tweet": "Tweet"
     },
     "heading": {

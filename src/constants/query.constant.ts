@@ -2,6 +2,8 @@ export const SORT_STALE_TIME = 60 * 60 * 1000 // 1 hour
 export const LONG_STATE_TIME = 60 * 60 * 1000 * 24 // 1 day
 export const SHORT_EXP_TIME = 1000 * 60 * 5 // 5 minutes
 export const DEFAULT_LIST_LIMIT = 20
+export const DEFAULT_POPULAR_LIMIT = 5
+export const DEFAULT_POPULAR_PAGE = 1
 
 export enum EAuthQuery {
   Login = 'Login',
@@ -12,7 +14,10 @@ export enum EAuthQuery {
 export enum EUserQuery {
   GetMe = 'GetMe',
   GetUser = 'GetUser',
-  GetPopularUser = 'GetPopularUser'
+  GetPopularUser = 'GetPopularUser',
+  GetLimitPopularUser = 'GetLimitPopularUser',
+  FollowUser = 'FollowUser',
+  UnFollowUser = 'UnFollowUser'
 }
 
 export enum ETweetQuery {

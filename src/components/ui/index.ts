@@ -1,5 +1,5 @@
 import { SmallAvatar } from './avatar'
-import { LoginButton } from './button'
+import { FollowButton, LoginButton } from './button'
 import { ExternalPreviewLink, IconLink } from './link'
 import { Logo } from './logo'
 import { MediaCard, MediaViewer } from './media'
@@ -14,6 +14,7 @@ export {
   IconLink,
   LeftSelectableSideBar,
   LoginButton,
+  FollowButton,
   Logo,
   MediaViewer,
   MyEmojiPicker,

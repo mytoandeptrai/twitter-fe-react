@@ -10,9 +10,10 @@ import styled from 'styled-components'
 type Props = {
   data: IUser
   style?: CSSProperties
+  renderValue?: (user: IUser) => React.ReactNode
 }
 
-const UserCard = ({ data, style }: Props) => {
+const UserCard = ({ data, style, renderValue }: Props) => {
   const { t } = useTranslation()
 
   const followersCount = data?.followers ? data?.followers?.length : 0
@@ -28,12 +29,30 @@ const UserCard = ({ data, style }: Props) => {
     )
   }
 
-  return (
-    <StyledRoot style={style}>
+  const renderUserWithFollow = () => {
+    if (renderValue && typeof renderValue === 'function') {
+      return (
+        <StyledFlex gap={1.8} align='flex-start' justify='space-between'>
+          <StyledFlex gap={1.8}>
+            <SmallAvatar user={data} />
+            {renderUserInfo()}
+          </StyledFlex>
+          {renderValue(data)}
+        </StyledFlex>
+      )
+    }
+
+    return (
       <StyledFlex gap={1.8}>
         <SmallAvatar user={data} />
         {renderUserInfo()}
       </StyledFlex>
+    )
+  }
+
+  return (
+    <StyledRoot style={style}>
+      {renderUserWithFollow()}
       <StyledUserBio>{data?.bio}</StyledUserBio>
     </StyledRoot>
   )
@@ -41,7 +60,9 @@ const UserCard = ({ data, style }: Props) => {
 
 export default memo(UserCard)
 
-const StyledRoot = styled.article`
+const StyledRoot = styled('article')<{
+  style: CSSProperties | undefined
+}>`
   background: ${({ theme }) => theme.backgroundColor1};
   display: flex;
   flex-direction: column;
@@ -54,6 +75,8 @@ const StyledRoot = styled.article`
   max-width: 95%;
   height: 17.5rem !important;
   margin: 1rem;
+
+  ${({ style }) => ({ ...(style ?? {}) })}
 `
 
 const StyledUserName = styled.p`

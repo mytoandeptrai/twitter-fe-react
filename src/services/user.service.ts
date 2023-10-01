@@ -1,14 +1,26 @@
 import { axiosClient } from '@/apis'
-import { EEndpoints, EUserQuery } from '@/constants'
+import { DEFAULT_POPULAR_LIMIT, DEFAULT_POPULAR_PAGE, EEndpoints, EUserQuery } from '@/constants'
 import { UserModel } from '@/models'
 import { IGetList, IUser } from '@/types'
 import { tryCatchFn } from '@/utils'
 import { getList } from '@/utils/query'
-import { QueryFunctionContext, useQueryClient } from '@tanstack/react-query'
+import { QueryFunctionContext, useMutation, useQueryClient } from '@tanstack/react-query'
 import { useCallback } from 'react'
+import { EventBusName, onPushEventBusHandler } from './event-bus.service'
 
 export const useUserService = () => {
   const queryClient = useQueryClient()
+
+  const invalidateQueriesAfterSuccess = useCallback(
+    (userId?: string) => {
+      queryClient.invalidateQueries([EUserQuery.GetMe])
+      queryClient.invalidateQueries([EUserQuery.GetPopularUser])
+      queryClient.invalidateQueries([EUserQuery.GetUser])
+
+      if (userId) queryClient.invalidateQueries([EUserQuery.GetUser, userId])
+    },
+    [queryClient]
+  )
 
   const validateUser = useCallback(async (username: string): Promise<IUser | null> => {
     const users = await axiosClient.get(EEndpoints.User)
@@ -48,11 +60,56 @@ export const useUserService = () => {
     }
   }
 
+  const getLimitPopularUsers = async () => {
+    return tryCatchFn<IUser[] | null>(async () => {
+      const params = { page: DEFAULT_POPULAR_PAGE, limit: DEFAULT_POPULAR_LIMIT }
+      const url = `${EEndpoints.User}/popular`
+      const response = await axiosClient.get(url, { params })
+      return response.data?.data
+    })
+  }
+
+  const followUser = async (userId: string): Promise<IUser | void> => {
+    try {
+      const url = `${EEndpoints.User}/follow/${userId}`
+      const response = await axiosClient.post(url)
+      invalidateQueriesAfterSuccess(userId)
+      return response?.data
+    } catch (error) {
+      onPushEventBusHandler({
+        type: EventBusName.Error,
+        payload: 'users.follow.error'
+      })
+    }
+  }
+
+  const unFollowUser = async (userId: string): Promise<IUser | void> => {
+    try {
+      const url = `${EEndpoints.User}/un-follow/${userId}`
+      const response = await axiosClient.post(url)
+      invalidateQueriesAfterSuccess(userId)
+      return response?.data
+    } catch (error) {
+      onPushEventBusHandler({
+        type: EventBusName.Error,
+        payload: 'users.follow.error'
+      })
+    }
+  }
+
+  const followUserMutation = useMutation([EUserQuery.FollowUser], followUser)
+  const unFollowUserMutation = useMutation([EUserQuery.UnFollowUser], unFollowUser)
+
   return {
     validateUser,
+
     getMe,
     getUser,
     getCurrentUser,
-    getPopularUsers
+    getPopularUsers,
+    getLimitPopularUsers,
+
+    followUserMutation,
+    unFollowUserMutation
   }
 }

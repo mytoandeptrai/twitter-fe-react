@@ -1,3 +1,4 @@
+import { FollowButton } from './follow-button'
 import { LoginButton } from './login-button'
 
-export { LoginButton }
+export { LoginButton, FollowButton }
