@@ -1,3 +1,2 @@
-import { StoryList } from './story-list'
-
-export { StoryList }
+export * from './story-list'
+export * from './story-form'

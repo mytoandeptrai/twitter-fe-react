@@ -71,6 +71,20 @@
         "allTweetByHashtag": "All Tweets By Hashtag"
       }
     },
+    "story": {
+      "title": "Story",
+      "text": {
+        "media": "Media",
+        "text": "Text",
+        "storyType": "What is your story type ?",
+        "create-story": "Create Story For Your News",
+        "whoCanSee": "Who can see your story ?",
+        "save": "Save Story",
+        "cancel": "Cancel Story",
+        "preview": "Preview your story",
+        "addYourTextHere": "Add your text here !!!"
+      }
+    },
     "tweet": {
       "not-found": "Tweet not found",
       "not-latest-found": "No latest tweet found",

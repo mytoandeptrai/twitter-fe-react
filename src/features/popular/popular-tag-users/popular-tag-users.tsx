@@ -10,11 +10,7 @@ import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { PopularTagSkeleton } from '../popular-tag-skeleton'
-import {
-  DEFAULT_POPULAR_SKELETON,
-  DEFAULT_POPULAR_SKELETON_WIDTH,
-  mappingPopularUsers
-} from './popular-tag-users.config'
+import { DEFAULT_POPULAR_SKELETON, mappingPopularUsers } from './popular-tag-users.config'
 
 const PopularTagUsers = () => {
   const { t } = useTranslation()
@@ -48,19 +44,19 @@ const PopularTagUsers = () => {
             <StyledWrapper key={user._id}>
               <StyledFlex gap={1.8}>
                 <SmallAvatar user={user} />
-                <Link to={`${ROUTES_PATH.profile}/${user._id}?screen=${EProfileType.Home}`}>
+                <StyledWrapperLink to={`${ROUTES_PATH.profile}/${user._id}?screen=${EProfileType.Home}`}>
                   <StyledUserName>{user.name}</StyledUserName>
                   <StyledUserFollowers>
                     {followersCount} {`${t('follower')}${followersCount > 1 ? 's' : ''}`}
                   </StyledUserFollowers>
-                </Link>
+                </StyledWrapperLink>
               </StyledFlex>
             </StyledWrapper>
           )
         })}
         {!isEnoughData && (
           <StyledWrapperSkeleton>
-            <PopularTagSkeleton numberOfTags={restNumberData} width={DEFAULT_POPULAR_SKELETON_WIDTH} />
+            <PopularTagSkeleton numberOfTags={restNumberData} />
           </StyledWrapperSkeleton>
         )}
       </React.Fragment>
@@ -87,7 +83,6 @@ const StyledHeading = styled.h4`
 const StyledWrapper = styled.div`
   padding-bottom: 1rem;
   border-bottom: 1px solid #ccc;
-
   &:not(:first-child) {
     padding-top: 1rem;
   }
@@ -97,8 +92,18 @@ const StyledWrapperSkeleton = styled.div`
   padding-top: 1rem;
 `
 
+const StyledWrapperLink = styled(Link)`
+  transform: translateY(-5px);
+`
+
 const StyledUserName = styled.p`
   font-size: ${EFontSize.Font7};
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-word;
 `
 
 const StyledUserFollowers = styled.p`

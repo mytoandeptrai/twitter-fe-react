@@ -1,18 +1,26 @@
 import { EStoryType } from '@/constants'
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 
 export const useCreateStory = () => {
   const [storyAudience, setStoryAudience] = useState<number>(0)
   const [storyType, setStoryType] = useState<EStoryType>(EStoryType.Text)
 
-  const onCancelCreateStory = () => {
-    console.log('cancel')
+  const onCancelCreateStory = useCallback(() => {
+    setStoryAudience(0)
+    setStoryType(EStoryType.Text)
+  }, [])
+
+  const onSubmitStory = (text: string, file?: string) => {
+    console.log('🚀 ~ file: useCreateStory.ts:15 ~ onSubmitStory ~ text:', text, file, storyAudience, storyType)
   }
 
-  const onSubmitStory = (text: string) => {
-    console.log('storyAudience', storyAudience)
-    console.log('submit', text)
-  }
+  const onChangeStoryType = useCallback((newStoryType: EStoryType) => {
+    setStoryType(newStoryType)
+  }, [])
+
+  const onChangeStoryAudience = useCallback((newStoryAudience: number) => {
+    setStoryAudience(newStoryAudience)
+  }, [])
 
   return {
     storyAudience,
@@ -20,6 +28,8 @@ export const useCreateStory = () => {
     storyType,
     setStoryType,
     onCancelCreateStory,
-    onSubmitStory
+    onSubmitStory,
+    onChangeStoryType,
+    onChangeStoryAudience
   }
 }
