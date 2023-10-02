@@ -16,7 +16,8 @@ const StoryFormText = (props: Props) => {
 
     onChangeText,
     onChangeBackground,
-    onSubmitHandler
+    onSubmitHandler,
+    onCancelStoryText
   } = useStoryFormText(props)
 
   const { background, text } = storyFormValue
@@ -76,7 +77,7 @@ const StoryFormText = (props: Props) => {
     const disabled = !storyFormValue.text
     return (
       <StyledGroupButton>
-        <StyledCancelButton disabled={disabled} onClick={props.onCancel}>
+        <StyledCancelButton disabled={disabled} onClick={onCancelStoryText}>
           {t('pages.story.text.cancel')}
         </StyledCancelButton>
         <StyledSaveButton disabled={disabled} onClick={onSubmitHandler}>

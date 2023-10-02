@@ -5,8 +5,11 @@ import { EStoryType } from '@/constants'
 import { LayoutOneSideBar } from '@/layouts'
 import { CreateStorySideBar } from './components'
 import { StoryFormImage, StoryFormText } from '@/features'
+import { PageMetaData } from '@/components'
+import { useTranslation } from 'react-i18next'
 
 const CreateStoryPage = () => {
+  const { t } = useTranslation()
   const { onCancelCreateStory, onSubmitStory, storyType, onChangeStoryType, onChangeStoryAudience } = useCreateStory()
   const { uploadImage } = useUploadService()
 
@@ -22,12 +25,15 @@ const CreateStoryPage = () => {
   }
 
   return (
-    <LayoutOneSideBar
-      isFullWidth
-      customSideBarWidth='20%'
-      sideBar={<CreateStorySideBar onChangeAudience={onChangeStoryAudience} onChangeStoryType={onChangeStoryType} />}
-      content={content()}
-    />
+    <React.Fragment>
+      <PageMetaData title={t('pages.story.text.create-story')} />
+      <LayoutOneSideBar
+        isFullWidth
+        customSideBarWidth='20%'
+        sideBar={<CreateStorySideBar onChangeAudience={onChangeStoryAudience} onChangeStoryType={onChangeStoryType} />}
+        content={content()}
+      />
+    </React.Fragment>
   )
 }
 

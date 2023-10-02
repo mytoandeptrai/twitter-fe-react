@@ -8,29 +8,24 @@ type Props = {
   onSubmit: (text: string) => void
 }
 
-export const useStoryFormText = ({ onSubmit }: Props) => {
+export const useStoryFormText = ({ onSubmit, onCancel }: Props) => {
   const [storyFormValue, setStoryFormValue] = useState<IStoryFormValue>(initialStoryFormValue)
 
-  const onShowError = useCallback(() => {
-    _.throttle(function () {
-      console.log('Function throttled after 1000ms!')
-    }, 1000)
-  }, [])
+  const onCancelStoryText = useCallback(() => {
+    setStoryFormValue(initialStoryFormValue)
+    onCancel()
+  }, [onCancel])
 
-  const onChangeText = useCallback(
-    (e: ChangeEvent<HTMLTextAreaElement>) => {
-      const text = e.target.value
-      if (text.length > MAX_LENGTH_STORY_TEXT) {
-        return onShowError()
-      }
-
+  const onChangeText = useCallback((e: ChangeEvent<HTMLTextAreaElement>) => {
+    const text = e.target.value
+    if (text.length <= MAX_LENGTH_STORY_TEXT) {
       setStoryFormValue((prev) => ({
         ...prev,
         text
       }))
-    },
-    [onShowError]
-  )
+    }
+    /** TODO: Add toast error */
+  }, [])
 
   const onChangeBackground = useCallback((background: string) => {
     setStoryFormValue((prev) => ({
@@ -48,6 +43,7 @@ export const useStoryFormText = ({ onSubmit }: Props) => {
   return {
     storyFormValue,
 
+    onCancelStoryText,
     onChangeText,
     onChangeBackground,
     onSubmitHandler
