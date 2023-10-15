@@ -19,3 +19,8 @@ export interface IStoryCreate {
 export interface IStoryGroup {
   [key: string]: IStory[]
 }
+
+export interface IStoryText {
+  background: string
+  text: string
+}

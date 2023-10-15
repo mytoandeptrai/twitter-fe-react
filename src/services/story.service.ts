@@ -1,7 +1,9 @@
-import { EEndpoints } from '@/constants'
-import { IStory, IStoryGroup } from '@/types'
+import { axiosClient } from '@/apis'
+import { EEndpoints, EStoryQuery } from '@/constants'
+import { IStory, IStoryCreate, IStoryGroup } from '@/types'
+import { tryCatchFn } from '@/utils'
 import { getList } from '@/utils/query'
-import { QueryFunctionContext } from '@tanstack/react-query'
+import { QueryFunctionContext, useMutation } from '@tanstack/react-query'
 
 export const useStoryService = () => {
   const getStoryList = (limit: number) => {
@@ -26,8 +28,23 @@ export const useStoryService = () => {
     }, {})
   }
 
+  const createStory = async (payload: IStoryCreate) => {
+    return tryCatchFn<IStory | null>(
+      async () => {
+        const url = `${EEndpoints.Story}`
+        const response = await axiosClient.post(url, payload)
+        return response?.data
+      },
+      undefined,
+      undefined,
+      true
+    )
+  }
+
   return {
     getStoryList,
-    groupStoryByUser
+    groupStoryByUser,
+
+    createStoryMutation: useMutation([EStoryQuery.CreateStory], createStory)
   }
 }

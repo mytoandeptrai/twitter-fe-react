@@ -8,15 +8,27 @@ export const safeCallFn = (fn: Function, ...args: any[]) => {
   fn && typeof fn === 'function' && fn(...args)
 }
 
-export const tryCatchFn = async <T>(fn: Function, shouldShowError?: boolean, customMsg?: string): Promise<T | null> => {
+export const tryCatchFn = async <T>(
+  fn: Function,
+  shouldShowError?: boolean,
+  customMsg?: string,
+  showThrowError?: boolean
+): Promise<T | null> => {
   try {
     return await fn()
   } catch (error: any) {
-    shouldShowError &&
+    if (shouldShowError) {
       onPushEventBusHandler({
         type: EventBusName.Error,
         payload: customMsg || error?.response?.data?.message
       })
+
+      return null
+    }
+
+    if (showThrowError) {
+      throw error
+    }
 
     return null
   }

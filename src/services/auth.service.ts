@@ -9,25 +9,35 @@ export const useAuthService = () => {
   const queryClient = useQueryClient()
 
   const login = async (inputBody: ILogin): Promise<ILoginResponse | null> => {
-    return tryCatchFn(async () => {
-      const url = `${EEndpoints.Auth}/signin`
-      const response = await axiosClient.post(url, inputBody)
-      const { user, accessToken } = response?.data
-      const userModel = new UserModel(user)
+    return tryCatchFn(
+      async () => {
+        const url = `${EEndpoints.Auth}/signin`
+        const response = await axiosClient.post(url, inputBody)
+        const { user, accessToken } = response?.data
+        const userModel = new UserModel(user)
 
-      return {
-        accessToken,
-        user: userModel
-      }
-    })
+        return {
+          accessToken,
+          user: userModel
+        }
+      },
+      undefined,
+      undefined,
+      true
+    )
   }
 
   const register = async (inputBody: any): Promise<ILoginResponse | null> => {
-    return tryCatchFn(async () => {
-      const url = `${EEndpoints.Auth}/signup`
-      const response = await axiosClient.post(url, inputBody)
-      return response?.data?.accessToken || ''
-    })
+    return tryCatchFn(
+      async () => {
+        const url = `${EEndpoints.Auth}/signup`
+        const response = await axiosClient.post(url, inputBody)
+        return response?.data?.accessToken || ''
+      },
+      undefined,
+      undefined,
+      true
+    )
   }
 
   const logout = async (): Promise<void | null> => {

@@ -6,8 +6,9 @@ import { IStory } from '@/types'
 import _ from 'lodash'
 import React, { FC, useMemo } from 'react'
 import styled from 'styled-components'
-import { StoryItemSkeleton } from '../story-item-skeleton'
 import { StoryCreateLink } from '../story-create-link'
+import { StoryItemSkeleton } from '../story-item-skeleton'
+import { StoryItem } from '../story-item'
 const MAX_SHOWN_STORY_COUNT = 50
 const MAX_SHOWN_STORY_SKELETON_COUNT = 5
 
@@ -21,7 +22,7 @@ const StoryList: FC = () => {
   })
 
   const groupedStoryByUsers = useMemo(() => {
-    return _.groupBy(storiesData, 'userId')
+    return _.groupBy(storiesData, 'owner._id')
   }, [storiesData])
 
   const renderStoryList = () => {
@@ -31,8 +32,9 @@ const StoryList: FC = () => {
           {Object.keys(groupedStoryByUsers)
             .slice(0, MAX_SHOWN_STORY_COUNT)
             .map((key: string) => {
-              const values = groupedStoryByUsers[key]
-              return <div key={`story-item-${values[0]._id}`}>Story Item</div>
+              const listStoryUser = groupedStoryByUsers[key]
+              const data = listStoryUser?.[0]
+              return <StoryItem data={data} isSmall={true} userId={key} key={`story-item-${data._id}`} />
             })}
         </StyledItemWrapper>
       )

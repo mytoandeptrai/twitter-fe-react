@@ -2,7 +2,7 @@ import { StyledFlex } from '@/components'
 import React, { CSSProperties } from 'react'
 import { useTranslation } from 'react-i18next'
 import styled from 'styled-components'
-import { useStoryFormText } from './useStoryFormText'
+import { useStoryFormText } from './hook'
 import { BACKGROUND_LIST } from '@/constants'
 type Props = {
   onCancel: () => void
@@ -26,7 +26,7 @@ const StoryFormText = (props: Props) => {
     return (
       <React.Fragment>
         <StyledLabel>{t('pages.story.text.addYourTextHere')}</StyledLabel>
-        <StyledTextArea onChange={onChangeText} rows={7} />
+        <StyledTextArea onChange={onChangeText} rows={7} value={text} />
       </React.Fragment>
     )
   }

@@ -106,7 +106,7 @@ const StyledMain = styled.div`
 const StyledUserInfo = styled.div`
   display: flex;
   gap: 1rem;
-  algin-items: center;
+  align-items: center;
   margin: 2rem 0;
 
   img {

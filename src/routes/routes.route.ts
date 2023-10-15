@@ -2,7 +2,8 @@ import React from 'react'
 const Auth = React.lazy(() => import('@/pages/auth'))
 const NewsFeed = React.lazy(() => import('@/pages/news-feed'))
 const Search = React.lazy(() => import('@/pages/search'))
-const CreateStory = React.lazy(() => import('@/pages/story'))
+const CreateStory = React.lazy(() => import('@/pages/story/pages/create'))
+const ViewStory = React.lazy(() => import('@/pages/story/pages/view'))
 const HashTag = React.lazy(() => import('@/pages/hashtag'))
 const TweetDetail = React.lazy(() => import('@/pages/tweet-detail'))
 const Explore = React.lazy(() => import('@/pages/explore'))
@@ -26,7 +27,8 @@ const ROUTES_PATH = {
   hashTags: '/hashtag',
   tweet: '/tweet',
   story: {
-    create: '/story/create'
+    create: '/story/create',
+    view: '/story/view'
   }
 }
 
@@ -62,6 +64,11 @@ const routes: RoutesType[] = [
   {
     path: ROUTES_PATH.story.create,
     Element: CreateStory,
+    isLazy: true
+  },
+  {
+    path: `${ROUTES_PATH.story.view}/:userId`,
+    Element: ViewStory,
     isLazy: true
   },
   {

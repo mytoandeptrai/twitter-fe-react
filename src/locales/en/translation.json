@@ -37,7 +37,9 @@
       "followers": "Followers",
       "popular-tags": "Popular Tags",
       "popular-users": "Who to follow?",
-      "tweet": "Tweet"
+      "tweet": "Tweet",
+      "typeSomething": "Type something",
+      "uploadImage": "Upload image"
     },
     "heading": {
       "authenticationGreeting": "Welcome back, please login to your account !"

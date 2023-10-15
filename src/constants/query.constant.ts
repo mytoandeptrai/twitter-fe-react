@@ -48,7 +48,8 @@ export enum EHashTagQuery {
 }
 
 export enum EStoryQuery {
-  GetStories = 'GetStories'
+  GetStories = 'GetStories',
+  CreateStory = 'CreateStory'
 }
 
 export enum ECommentQuery {
