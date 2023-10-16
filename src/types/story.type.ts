@@ -16,6 +16,10 @@ export interface IStoryCreate {
   audience: number
 }
 
+export interface IStoryUpdate {
+  storyId: string
+}
+
 export interface IStoryGroup {
   [key: string]: IStory[]
 }
@@ -23,4 +27,10 @@ export interface IStoryGroup {
 export interface IStoryText {
   background: string
   text: string
+}
+
+export interface IStoryUserMetadata {
+  idxInList: number
+  nextUserId: string | null
+  prevUserId: string | null
 }

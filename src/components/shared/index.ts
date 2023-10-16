@@ -1,9 +1,9 @@
 import { CommonButton } from './button'
-import { BaseSelector, ControlledInput, FileInput, LinkTextArea, UncontrolledInput } from './form'
+import { BaseSelector, ControlledInput, Dropdown, FileInput, LinkTextArea, UncontrolledInput } from './form'
 import { ImageWithPlaceHolder } from './image'
 import { Loader } from './loader'
 import { Loading } from './loading'
-import { AudienceSelector, GenderSelector, TweetActionSelector } from './selectors'
+import { AudienceSelector, GenderSelector, StoryActionSelector, TweetActionSelector } from './selectors'
 import { PageMetaData } from './seo'
 import { StyledContainer, StyledFlex, StyledShake, StyledSpin } from './style'
 
@@ -24,5 +24,7 @@ export {
   StyledSpin,
   UncontrolledInput,
   TweetActionSelector,
-  ControlledInput
+  ControlledInput,
+  Dropdown,
+  StoryActionSelector
 }

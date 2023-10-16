@@ -42,10 +42,8 @@ const errorResponseInterceptor = async (error: any) => {
     onPushEventBusHandler({
       type: EventBusName.Logout
     })
-
     return Promise.reject({ ...error })
   }
-
   return Promise.reject({ ...error })
 }
 
@@ -53,6 +51,6 @@ axiosClient.interceptors.request.use(requestInterceptor, (error) => {
   return Promise.reject(error)
 })
 
-axiosClient.interceptors.request.use((response) => {
+axiosClient.interceptors.response.use((response) => {
   return response
 }, errorResponseInterceptor)

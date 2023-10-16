@@ -49,7 +49,9 @@ export enum EHashTagQuery {
 
 export enum EStoryQuery {
   GetStories = 'GetStories',
-  CreateStory = 'CreateStory'
+  CreateStory = 'CreateStory',
+  UpdateStory = 'UpdateStory',
+  DeleteStory = 'DeleteStory'
 }
 
 export enum ECommentQuery {

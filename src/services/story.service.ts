@@ -1,6 +1,6 @@
 import { axiosClient } from '@/apis'
 import { EEndpoints, EStoryQuery } from '@/constants'
-import { IStory, IStoryCreate, IStoryGroup } from '@/types'
+import { IStory, IStoryCreate, IStoryGroup, IStoryUpdate } from '@/types'
 import { tryCatchFn } from '@/utils'
 import { getList } from '@/utils/query'
 import { QueryFunctionContext, useMutation } from '@tanstack/react-query'
@@ -41,10 +41,32 @@ export const useStoryService = () => {
     )
   }
 
+  const updateStory = async (payload: IStoryUpdate) => {
+    return tryCatchFn<IStory | null>(async () => {
+      const url = `${EEndpoints.Story}/${payload.storyId}`
+      const response = await axiosClient.patch(url)
+      return response?.data
+    })
+  }
+
+  const deleteStory = async (payload: IStoryUpdate) => {
+    return tryCatchFn<IStory | null>(async () => {
+      const url = `${EEndpoints.Story}/${payload.storyId}`
+      const response = await axiosClient.delete(url)
+      return response?.data
+    })
+  }
+
+  const createStoryMutation = useMutation([EStoryQuery.CreateStory], createStory)
+  const updateStoryMutation = useMutation([EStoryQuery.UpdateStory], updateStory)
+  const deleteStoryMutation = useMutation([EStoryQuery.DeleteStory], deleteStory)
+
   return {
     getStoryList,
     groupStoryByUser,
 
-    createStoryMutation: useMutation([EStoryQuery.CreateStory], createStory)
+    createStoryMutation,
+    updateStoryMutation,
+    deleteStoryMutation
   }
 }

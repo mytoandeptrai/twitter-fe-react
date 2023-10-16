@@ -28,15 +28,19 @@ const StoryList: FC = () => {
   const renderStoryList = () => {
     if (!!storiesData.length) {
       return (
-        <StyledItemWrapper>
+        <StyledItemListWrapper>
           {Object.keys(groupedStoryByUsers)
             .slice(0, MAX_SHOWN_STORY_COUNT)
             .map((key: string) => {
               const listStoryUser = groupedStoryByUsers[key]
               const data = listStoryUser?.[0]
-              return <StoryItem data={data} isSmall={true} userId={key} key={`story-item-${data._id}`} />
+              return (
+                <StyledItemWrapper key={`story-item-${data._id}`}>
+                  <StoryItem data={data} userId={key} />
+                </StyledItemWrapper>
+              )
             })}
-        </StyledItemWrapper>
+        </StyledItemListWrapper>
       )
     }
 
@@ -72,4 +76,11 @@ const StyledItemWrapper = styled.article`
   justify-content: center;
   position: relative;
   cursor: pointer;
+`
+
+const StyledItemListWrapper = styled.div`
+  flex: 1;
+  display: flex;
+  align-items: stretch;
+  gap: 1.5rem;
 `

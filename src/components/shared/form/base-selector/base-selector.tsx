@@ -31,6 +31,7 @@ const BaseSelector = <T,>({ defaultValue, options, text, renderValue, onChange: 
     (newValue: T) => {
       safeCallFn(onChangeProp, newValue)
       setValue(newValue)
+      setVisibleDropdown(false)
     },
     [onChangeProp]
   )
@@ -120,6 +121,5 @@ export const SelectedItemSelectionItem = styled.div`
     --size: 1.6rem;
     width: var(--size);
     height: var(--size);
-    transform: translateY(3px);
   }
 `

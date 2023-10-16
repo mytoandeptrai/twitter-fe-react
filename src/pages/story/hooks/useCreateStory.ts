@@ -1,10 +1,12 @@
-import { EStoryType } from '@/constants'
+import { EStoryQuery, EStoryType } from '@/constants'
 import { ROUTES_PATH } from '@/routes'
 import { useStoryService } from '@/services'
+import { useQueryClient } from '@tanstack/react-query'
 import { useCallback, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 export const useCreateStory = () => {
+  const queryClient = useQueryClient()
   const navigate = useNavigate()
   const [storyAudience, setStoryAudience] = useState<number>(0)
   const [storyType, setStoryType] = useState<EStoryType>(EStoryType.Text)
@@ -24,6 +26,7 @@ export const useCreateStory = () => {
 
     createStoryMutation.mutate(payload, {
       onSuccess: () => {
+        queryClient.invalidateQueries([EStoryQuery.GetStories])
         navigate(ROUTES_PATH.home)
       },
       onError: () => {

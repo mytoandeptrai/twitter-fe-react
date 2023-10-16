@@ -1,6 +1,5 @@
 import { ChangeEvent, useCallback, useState } from 'react'
 import { IStoryFormValue, initialStoryFormValue } from '../story-form-text.config'
-import _ from 'lodash'
 import { MAX_LENGTH_STORY_TEXT } from '@/constants'
 
 type Props = {

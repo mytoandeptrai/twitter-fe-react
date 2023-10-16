@@ -4,10 +4,10 @@ import styled from 'styled-components'
 
 type Props = {
   story: any
-  customStyles?: string
+  isSmall?: boolean
 }
 
-const StoryImageViewer = ({ story, customStyles }: Props) => {
+const StoryImageViewer = ({ story, isSmall = false }: Props) => {
   const { editor, onReady } = useFabricJSEditor()
 
   useEffect(() => {
@@ -36,7 +36,7 @@ const StoryImageViewer = ({ story, customStyles }: Props) => {
 
   return (
     <StyledRoot active={!!story}>
-      <StyledCanvas>
+      <StyledCanvas isSmall={isSmall}>
         <FabricJSCanvas onReady={onReady} />
       </StyledCanvas>
     </StyledRoot>
@@ -52,7 +52,12 @@ const StyledRoot = styled('div')<{ active: boolean }>`
   cursor: pointer;
 `
 
-const StyledCanvas = styled.div`
-  width: 100%;
-  height: 100%;
+const StyledCanvas = styled('div')<{ isSmall: boolean }>`
+  width: ${({ isSmall }) => (isSmall ? '370px' : '100%')};
+  height: ${({ isSmall }) => (isSmall ? '570px' : '100%')};
+
+  div {
+    width: ${({ isSmall }) => (isSmall ? '370px' : '100%')};
+    height: ${({ isSmall }) => (isSmall ? '570px' : '100%')};
+  }
 `

@@ -80,11 +80,14 @@
         "text": "Text",
         "storyType": "What is your story type ?",
         "create-story": "Create Story For Your News",
+        "view-story": "Explore Story For Your News",
         "whoCanSee": "Who can see your story ?",
         "save": "Save Story",
         "cancel": "Cancel Story",
         "preview": "Preview your story",
-        "addYourTextHere": "Add your text here !!!"
+        "addYourTextHere": "Add your text here !!!",
+        "chooseYourStoryToView": "Choose your story to view",
+        "delete": "Delete"
       }
     },
     "tweet": {

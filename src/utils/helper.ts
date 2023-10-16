@@ -137,3 +137,15 @@ export const transformFieldToObjectWithId = <T>(field: keyof T, data: T): void =
     } as unknown as T[keyof T]
   }
 }
+
+export const removeDuplicatesByKey = <T>(array: T[], key: keyof T): T[] => {
+  const seen = new Set()
+  return array?.filter((item) => {
+    const itemKey = item[key]
+    if (!seen.has(itemKey)) {
+      seen.add(itemKey)
+      return true
+    }
+    return false
+  })
+}
