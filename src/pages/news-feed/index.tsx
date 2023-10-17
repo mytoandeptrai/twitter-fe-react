@@ -1,6 +1,6 @@
 import { InfinityTweetList, PageMetaData } from '@/components'
-import { EFormType, ETweetQuery } from '@/constants'
-import { PopularTagList, PopularTagUsers, StoryList, TweetForm } from '@/features'
+import { EFormType, ENotificationScreen, ETweetQuery } from '@/constants'
+import { NotificationList, PopularTagList, PopularTagUsers, StoryList, TweetForm } from '@/features'
 import { LayoutTwoSideBar, LayoutWithHeader } from '@/layouts'
 import React, { FC } from 'react'
 import { useTranslation } from 'react-i18next'
@@ -13,7 +13,7 @@ const NewFeeds: FC = () => {
       <PageMetaData title={t('pages.home')} />
       <LayoutWithHeader>
         <LayoutTwoSideBar
-          leftSideBar={<>LeftSidebar</>}
+          leftSideBar={<NotificationList screen={ENotificationScreen.NewFeed} />}
           content={
             <React.Fragment>
               <StoryList />

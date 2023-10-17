@@ -25,7 +25,8 @@ export const useCommentService = () => {
         input.type === EAddCommentType.CreateTweetComment ? input.tweetId : input.commentId
       }`
       const response = await axiosClient.post(url, input.comment)
-      return new CommentModel(response?.data).getData()
+      const comment = new CommentModel(response?.data?.data).getData()
+      return comment
     }, true)
   }
 

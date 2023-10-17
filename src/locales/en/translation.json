@@ -39,7 +39,9 @@
       "popular-users": "Who to follow?",
       "tweet": "Tweet",
       "typeSomething": "Type something",
-      "uploadImage": "Upload image"
+      "uploadImage": "Upload image",
+      "repliedYourComment": "Has replied your comment",
+      "commentedYourTweet": "Has commented your tweet"
     },
     "heading": {
       "authenticationGreeting": "Welcome back, please login to your account !"
@@ -105,6 +107,12 @@
         "userLikedTweet": "User liked this tweet",
         "userSavedTweet": "User saved this tweet",
         "userRetweetedTweet": "User retweeted this tweet"
+      }
+    },
+    "notification": {
+      "title": "Notifications",
+      "text": {
+        "viewAllNotification": "Click to view all notifications"
       }
     }
   }

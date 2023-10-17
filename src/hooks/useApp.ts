@@ -1,5 +1,5 @@
 import { ELocalStorageKey, EUserQuery, LONG_STATE_TIME } from '@/constants'
-import { EventBus, EventBusName, useUserService } from '@/services'
+import { EventBus, EventBusName, useNotificationService, useUserService } from '@/services'
 import { IUser } from '@/types'
 import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { useEffect, useMemo } from 'react'
@@ -9,6 +9,7 @@ import { useLocalStorage } from './useLocalStorage'
 export const useApp = () => {
   const { getMe } = useUserService()
   const queryClient = useQueryClient()
+  const { createNotificationMutation } = useNotificationService()
 
   const [accessToken, setAccessToken] = useLocalStorage(ELocalStorageKey.AccessToken, '')
 
@@ -38,6 +39,10 @@ export const useApp = () => {
           setAccessToken('')
           queryClient.invalidateQueries([EUserQuery.GetMe])
         }
+      }
+
+      if (event.type === EventBusName.CreateNotification) {
+        createNotificationMutation.mutate(event.payload)
       }
     })
   }

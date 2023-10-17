@@ -4,7 +4,6 @@ import { EventBusName, onPushEventBusHandler, useCommentService, useUploadServic
 import { EAddCommentType, IComment, IMedia, ITweet, TCreateTweetComment, TReplyComment } from '@/types'
 import { initMediaFromFile } from '@/utils'
 import { useQueryClient } from '@tanstack/react-query'
-import { pick } from 'lodash'
 import { ChangeEvent, useCallback, useState } from 'react'
 
 type Props = {
@@ -83,16 +82,15 @@ export const useCreateCommentForm = ({ tweet, comment }: Props) => {
   }
 
   const getNotificationPayload = (updatedComment: IComment) => {
-    const receivers = !!comment
-      ? [pick(updatedComment, ['author', '_id'])]
-      : [pick(updatedComment, ['tweet', 'author', '_id'])]
-
-    const url = `/tweet/${pick(updatedComment, ['tweet', '_id'])}`
+    const replyUserId = [updatedComment?.author?._id]
+    const replyTweetAuthorId = [updatedComment?.tweet?.author?._id]
+    const receivers = !!comment ? replyUserId : replyTweetAuthorId
+    const url = `/tweet/${updatedComment?.tweet?._id}`
 
     return {
       type: EventBusName.CreateNotification,
       payload: {
-        text: !!comment ? 'repliedYourComment' : 'commentedYourTweet',
+        text: !!comment ? 'common.text.repliedYourComment' : 'common.text.commentedYourTweet',
         receivers,
         url,
         type: 'comment'

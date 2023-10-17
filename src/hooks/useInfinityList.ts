@@ -33,6 +33,7 @@ export const useInfinityList = <T>({ queryFunction, queryKey, queryConfig }: Pro
     data,
     isLoading,
     fetchNextPage,
-    hasMore
+    hasMore,
+    totalRecords
   }
 }
