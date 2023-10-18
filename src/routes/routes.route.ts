@@ -2,6 +2,7 @@ import React from 'react'
 const Auth = React.lazy(() => import('@/pages/auth'))
 const NewsFeed = React.lazy(() => import('@/pages/news-feed'))
 const Search = React.lazy(() => import('@/pages/search'))
+const Notification = React.lazy(() => import('@/pages/notification'))
 const CreateStory = React.lazy(() => import('@/pages/story/pages/create'))
 const ViewStory = React.lazy(() => import('@/pages/story/pages/view'))
 const HashTag = React.lazy(() => import('@/pages/hashtag'))
@@ -58,6 +59,12 @@ const routes: RoutesType[] = [
   {
     path: ROUTES_PATH.search,
     Element: Search,
+    isLazy: true,
+    isPrivate: true
+  },
+  {
+    path: ROUTES_PATH.notifications,
+    Element: Notification,
     isLazy: true,
     isPrivate: true
   },
