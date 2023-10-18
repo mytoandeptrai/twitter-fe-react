@@ -3,9 +3,10 @@ import { EEndpoints, ENotificationQuery } from '@/constants'
 import { INotification, INotificationDTO } from '@/types'
 import { tryCatchFn } from '@/utils'
 import { getList } from '@/utils/query'
-import { QueryFunctionContext, useMutation } from '@tanstack/react-query'
+import { QueryFunctionContext, useMutation, useQueryClient } from '@tanstack/react-query'
 
 export const useNotificationService = () => {
+  const queryClient = useQueryClient()
   const getNotificationList = (limit: number) => {
     return ({ pageParam }: QueryFunctionContext) => {
       const url = `${EEndpoints.Notification}`
@@ -42,7 +43,10 @@ export const useNotificationService = () => {
   const createNotificationMutation = useMutation([ENotificationQuery.ReadNotification], createNotification)
 
   const markAsReadHandler = async (ids: string[]) => {
-    await readAllNotificationMutation.mutateAsync(ids)
+    const response = await readAllNotificationMutation.mutateAsync(ids)
+    if (response) {
+      queryClient.invalidateQueries([ENotificationQuery.GetNotifications])
+    }
   }
 
   return {

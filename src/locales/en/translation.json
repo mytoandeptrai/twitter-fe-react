@@ -112,7 +112,8 @@
     "notification": {
       "title": "Notifications",
       "text": {
-        "viewAllNotification": "Click to view all notifications"
+        "viewAllNotification": "Click to view all notifications",
+        "readAllNotification": "Read all notifications"
       }
     }
   }

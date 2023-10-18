@@ -28,7 +28,6 @@ const NotificationItem = ({ notification }: Props) => {
 
     return !notification?.isRead?.includes(userId)
   }, [notification?.isRead, user?._id])
-  console.log('🚀 ~ file: notification-item.tsx:31 ~ isUnRead ~ isUnRead:', isUnRead);
 
   const onClick = async () => {
     if (!notification._id) return

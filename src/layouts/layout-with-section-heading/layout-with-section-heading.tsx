@@ -23,7 +23,7 @@ const StyledRoot = styled.div`
   border-radius: 1.2rem;
   padding: 1rem 2rem;
   margin-bottom: 2.5rem;
-  min-height: 30rem;
+  min-height: 13rem;
 `
 
 const StyledHeader = styled.header`
