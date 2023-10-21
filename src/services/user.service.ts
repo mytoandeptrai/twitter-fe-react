@@ -37,7 +37,7 @@ export const useUserService = () => {
   }, [])
 
   const getUser = useCallback(async ({ queryKey }: QueryFunctionContext) => {
-    tryCatchFn<IUser>(async () => {
+    return tryCatchFn<IUser>(async () => {
       const [, id] = queryKey
       const url = `${EEndpoints.User}/${id}`
       const response = await axiosClient.get(url)

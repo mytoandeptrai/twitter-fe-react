@@ -3,6 +3,7 @@ import { EventBusName, onPushEventBusHandler } from '@/services'
 import { IMedia } from '@/types'
 import { SyntheticEvent } from 'react'
 import { v4 as uuid } from 'uuid'
+import queryString from 'query-string'
 
 export const safeCallFn = (fn: Function, ...args: any[]) => {
   fn && typeof fn === 'function' && fn(...args)
@@ -147,5 +148,12 @@ export const removeDuplicatesByKey = <T>(array: T[], key: keyof T): T[] => {
       return true
     }
     return false
+  })
+}
+
+export const queryStringToObject = (qs: string, options = {}) => {
+  return queryString.parse(qs, {
+    arrayFormat: 'bracket',
+    ...options
   })
 }

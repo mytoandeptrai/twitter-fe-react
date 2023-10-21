@@ -58,7 +58,12 @@
     "profile": {
       "profile": "Profile",
       "media": "Media",
-      "liked-tweets": "Liked tweets"
+      "liked-tweets": "Liked tweets",
+      "text": {
+        "profile": "Profile",
+        "media": "Medias",
+        "liked-tweets": "Liked tweets"
+      }
     },
     "explore": {
       "index": "Explore",
@@ -97,6 +102,9 @@
       "not-latest-found": "No latest tweet found",
       "not-popular-found": "No popular tweets found",
       "not-bookmark-found": "No bookmark tweets found",
+      "not-tweet-user-id-found": "There is no any tweets of this user which is found",
+      "not-liked-tweet-user-id-found": "There is no any liked tweets of this user which is found",
+      "not-media-user-id-found": "There is no any medias of this user which is found",
       "create": "Create",
       "update": "Update",
       "delete": "Delete",

@@ -108,3 +108,10 @@ export interface IOptionSidebar<T> {
 export interface IMediaWithTweetId extends IMedia {
   tweetId: string
 }
+
+export type ISelectableSideBar<T> = {
+  name: string
+  id: string
+  icon?: JSX.Element
+  value: T
+}

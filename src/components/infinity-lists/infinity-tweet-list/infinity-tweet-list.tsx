@@ -1,7 +1,7 @@
 import { useInfinityList } from '@/hooks'
 import { ITweet } from '@/types'
 import React from 'react'
-import { DEFAULT_TWEET_LIMIT, generateEmptyMessage } from './infinity-tweet-list.config'
+import { DEFAULT_TWEET_LIMIT, generateMessage } from './infinity-tweet-list.config'
 import { useInfinityTweet } from './useInfinityTweet'
 import { TweetItem, TweetItemSkeleton } from '@/features'
 import { EFontWeight } from '@/constants'
@@ -39,7 +39,7 @@ const InfinityTweetList = ({ queryKey }: Props) => {
   }
 
   if (tweetData.length === 0) {
-    return <StyledEmptyTweetList>{generateEmptyMessage(queryKey, t)}</StyledEmptyTweetList>
+    return <StyledEmptyTweetList>{generateMessage(queryKey, t)}</StyledEmptyTweetList>
   }
 
   return (
