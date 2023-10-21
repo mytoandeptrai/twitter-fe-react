@@ -25,3 +25,8 @@ export interface ILoginResponse {
   user: IUser
   accessToken: string
 }
+
+export interface IUserUpdateDto {
+  userId: string
+  updatedUserDto: Partial<IUser>
+}

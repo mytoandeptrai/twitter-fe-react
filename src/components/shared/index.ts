@@ -1,6 +1,6 @@
 import { CommonButton } from './button'
 import { BaseSelector, ControlledInput, Dropdown, FileInput, LinkTextArea, UncontrolledInput } from './form'
-import { ImageWithPlaceHolder } from './image'
+import { ImageWithPlaceHolder, ImageWithUpload } from './image'
 import { Loader } from './loader'
 import { Loading } from './loading'
 import { AudienceSelector, GenderSelector, StoryActionSelector, TweetActionSelector } from './selectors'
@@ -26,5 +26,6 @@ export {
   TweetActionSelector,
   ControlledInput,
   Dropdown,
-  StoryActionSelector
+  StoryActionSelector,
+  ImageWithUpload
 }

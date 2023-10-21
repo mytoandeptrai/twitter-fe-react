@@ -1,7 +1,7 @@
 import { axiosClient } from '@/apis'
 import { DEFAULT_POPULAR_LIMIT, DEFAULT_POPULAR_PAGE, EEndpoints, EUserQuery } from '@/constants'
 import { UserModel } from '@/models'
-import { IGetList, IUser } from '@/types'
+import { IGetList, IUser, IUserUpdateDto } from '@/types'
 import { tryCatchFn } from '@/utils'
 import { getList } from '@/utils/query'
 import { QueryFunctionContext, useMutation, useQueryClient } from '@tanstack/react-query'
@@ -97,8 +97,21 @@ export const useUserService = () => {
     }
   }
 
+  const updateUser = async (payload: IUserUpdateDto): Promise<IUser | void> => {
+    const { updatedUserDto, userId } = payload
+    try {
+      const url = `${EEndpoints.User}/${userId}`
+      const response = await axiosClient.patch(url, updatedUserDto)
+      invalidateQueriesAfterSuccess(userId)
+      return response?.data
+    } catch (error) {
+      throw error
+    }
+  }
+
   const followUserMutation = useMutation([EUserQuery.FollowUser], followUser)
   const unFollowUserMutation = useMutation([EUserQuery.UnFollowUser], unFollowUser)
+  const updateUserMutation = useMutation([EUserQuery.UpdateUser], updateUser)
 
   return {
     validateUser,
@@ -110,6 +123,7 @@ export const useUserService = () => {
     getLimitPopularUsers,
 
     followUserMutation,
-    unFollowUserMutation
+    unFollowUserMutation,
+    updateUserMutation
   }
 }

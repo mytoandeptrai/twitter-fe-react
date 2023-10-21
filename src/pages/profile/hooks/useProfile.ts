@@ -4,11 +4,9 @@ import { useUserService } from '@/services'
 import { queryStringToObject } from '@/utils'
 import { useQuery } from '@tanstack/react-query'
 import { useCallback } from 'react'
-import { useTranslation } from 'react-i18next'
 import { useLocation, useNavigate, useParams } from 'react-router-dom'
 
 export const useProfile = () => {
-  const { t } = useTranslation()
   const { userId = '' } = useParams()
   const location = useLocation()
   const navigate = useNavigate()

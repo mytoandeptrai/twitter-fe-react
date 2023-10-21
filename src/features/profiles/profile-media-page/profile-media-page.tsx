@@ -6,7 +6,7 @@ import { useParams } from 'react-router-dom'
 const ProfileMediaPage = () => {
   const { userId = '' } = useParams()
 
-  if (!userId) return
+  if (!userId) return null
   return <InfinityMediasList queryKey={[ETweetQuery.GetTweetMediaByUser, userId]} />
 }
 

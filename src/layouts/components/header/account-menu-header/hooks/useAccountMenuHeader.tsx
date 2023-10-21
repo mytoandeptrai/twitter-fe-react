@@ -1,4 +1,4 @@
-import { ELocalStorageKey } from '@/constants'
+import { ELocalStorageKey, EProfileScreen } from '@/constants'
 import { useLocalStorage } from '@/hooks'
 import { ROUTES_PATH } from '@/routes'
 import { EventBusName, onPushEventBusHandler, useAuthService, useUserService } from '@/services'
@@ -61,12 +61,16 @@ export const useAccountMenuHeader = () => {
         case EAccountMenuHeaderOptions.Notifications:
           onNavigate(ROUTES_PATH.notifications)
           break
+        case EAccountMenuHeaderOptions.Profile:
+          const url = `${ROUTES_PATH.profile}/${user?._id}?screen=${EProfileScreen.Home}`
+          onNavigate(url)
+          break
         default:
           onNavigate(ROUTES_PATH.home)
           break
       }
     },
-    [onLogout, onNavigate]
+    [onLogout, onNavigate, user?._id]
   )
 
   return {

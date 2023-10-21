@@ -4,6 +4,8 @@ import { PageMetaData } from '@/components'
 import { LayoutOneSideBar, LayoutWithHeader } from '@/layouts'
 import { EProfileScreen } from '@/constants'
 import { ProfileContent, ProfileSidebar } from './components'
+import { UserOverview } from '@/features'
+import { IUser } from '@/types'
 
 const ProfilePage = () => {
   const { userData, isLoading, screen, onChangeScreen } = useProfile()
@@ -11,8 +13,7 @@ const ProfilePage = () => {
     <React.Fragment>
       <PageMetaData title={`${userData?.name || ''}`} />
       <LayoutWithHeader>
-        {/* <UserOverview loading={isLoading} user={userData} /> */}
-        <p>User Overview</p>
+        <UserOverview isLoading={isLoading} user={userData as IUser} />
         <LayoutOneSideBar
           sideBar={<ProfileSidebar<EProfileScreen> defaultValue={screen as EProfileScreen} onChange={onChangeScreen} />}
           content={<ProfileContent screen={screen as EProfileScreen} />}

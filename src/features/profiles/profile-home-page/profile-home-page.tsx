@@ -3,11 +3,9 @@ import { EFormType, ETweetQuery } from '@/constants'
 import { TweetForm } from '@/features/tweets'
 import { useUserService } from '@/services'
 import React, { memo } from 'react'
-import { useTranslation } from 'react-i18next'
 import { useParams } from 'react-router-dom'
 
 const ProfileHomePage = () => {
-  const { t } = useTranslation()
   const { getCurrentUser } = useUserService()
   const { userId } = useParams()
   const currentUser = getCurrentUser()

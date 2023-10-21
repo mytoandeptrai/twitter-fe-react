@@ -17,7 +17,8 @@ export enum EUserQuery {
   GetPopularUser = 'GetPopularUser',
   GetLimitPopularUser = 'GetLimitPopularUser',
   FollowUser = 'FollowUser',
-  UnFollowUser = 'UnFollowUser'
+  UnFollowUser = 'UnFollowUser',
+  UpdateUser = 'UpdateUser'
 }
 
 export enum ETweetQuery {

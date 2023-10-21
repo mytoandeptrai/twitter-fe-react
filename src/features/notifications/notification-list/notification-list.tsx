@@ -5,7 +5,6 @@ import {
   NOTIFICATION_SKELETON_NUMBER,
   NOTIFICATION_SMALL_LIMIT
 } from '@/constants'
-import { useUserService } from '@/services'
 import React, { useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNotificationList } from './hook'
@@ -25,8 +24,7 @@ type Props = {
 const NotificationList = ({ screen }: Props) => {
   const { t } = useTranslation()
 
-  const { data, isLoading, hasMore, shouldHaveViewAllButton, isThereAnyUnReadNotification, fetchNextPage } =
-    useNotificationList(screen)
+  const { data, isLoading, hasMore, isThereAnyUnReadNotification, fetchNextPage } = useNotificationList(screen)
 
   const notificationList = useMemo(() => {
     return data?.map((notification) => (

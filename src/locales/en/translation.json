@@ -6,6 +6,7 @@
       "delete": "Delete",
       "save": "Save",
       "profile": "Profile",
+      "update": "Update",
       "notifications": "Notifications",
       "logout": "Logout",
       "like": "Like",
@@ -21,7 +22,10 @@
       "reply-lowercase": "reply",
       "explore": "Explore",
       "follow": "Follow",
-      "unFollow": "UnFollow"
+      "unFollow": "UnFollow",
+      "edit": "Edit",
+      "sendMessage": "Send Message",
+      "reportUser": "Report this user"
     },
     "text": {
       "doNotHaveAnAccount": "Don't have an account?",
@@ -35,6 +39,8 @@
       "other": "Other",
       "everyone": "Everyone",
       "followers": "Followers",
+      "following": "Following",
+      "followed": "Followed",
       "popular-tags": "Popular Tags",
       "popular-users": "Who to follow?",
       "tweet": "Tweet",
@@ -62,7 +68,9 @@
       "text": {
         "profile": "Profile",
         "media": "Medias",
-        "liked-tweets": "Liked tweets"
+        "liked-tweets": "Liked tweets",
+        "editProfile": "Edit Your Profile",
+        "updateYourAvatar": "Update Your Avatar"
       }
     },
     "explore": {
