@@ -6,10 +6,13 @@ import PrivateRoute from '@/routes/PrivateRoute.route'
 import React, { Suspense } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
+import { useSocket } from './socket'
 
 const CommonModal = React.lazy(() => import('@/components/ui/modal/common-modal/common-modal'))
 
 function App() {
+  // eslint-disable-next-line no-empty-pattern
+  const {} = useSocket()
   const { isLoadingUser } = useApp()
   const { theme } = useMyTheme()
 
