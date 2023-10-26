@@ -1,21 +1,17 @@
-import { useAppContext } from '@/contexts'
-import { SocketConnector } from './socketConnector'
-import { APP_DISPATCH_ACTIONS } from '@/constants'
+import { setSocket } from '@/store/app/app.slice'
 import { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
+import { SocketConnector } from './socketConnector'
 
 export const useSocket = () => {
-  const { dispatch } = useAppContext()
+  const dispatch = useDispatch()
 
   const initSocket = () => {
     const socketConnector = new SocketConnector()
     const socketInstance = socketConnector.instance
 
     socketInstance.on('connect', () => {
-      console.log('Connected')
-      // dispatch({
-      //   type: APP_DISPATCH_ACTIONS.SET_SOCKET,
-      //   payload: socketInstance
-      // })
+      dispatch(setSocket(socketInstance))
     })
   }
 

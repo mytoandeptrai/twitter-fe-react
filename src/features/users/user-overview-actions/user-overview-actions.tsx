@@ -10,7 +10,8 @@ type Props = {
 
 const UserOverViewActions = ({ userId }: Props) => {
   const { t } = useTranslation()
-  const { isMe, editUserInfoFormRef, onShowEditUserInfoForm, onGoToChat, onReportUser } = useUserOverViewActions(userId)
+  const { isLoading, isMe, editUserInfoFormRef, onShowEditUserInfoForm, onGoToChat, onReportUser } =
+    useUserOverViewActions(userId)
 
   const generateUserActionsContent = () => {
     if (isMe) {
@@ -19,8 +20,12 @@ const UserOverViewActions = ({ userId }: Props) => {
 
     return (
       <React.Fragment>
-        <CommonButton onClick={onGoToChat}>{t('common.button.sendMessage')}</CommonButton>
-        <CommonButton onClick={onReportUser}>{t('common.button.reportUser')}</CommonButton>
+        <CommonButton onClick={() => onGoToChat(userId)} disabled={isLoading}>
+          {t('common.button.sendMessage')}
+        </CommonButton>
+        <CommonButton onClick={() => onReportUser(userId)} disabled={isLoading}>
+          {t('common.button.reportUser')}
+        </CommonButton>
       </React.Fragment>
     )
   }

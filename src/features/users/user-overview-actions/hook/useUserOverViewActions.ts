@@ -1,9 +1,10 @@
 import { useUserService } from '@/services'
 import { BaseControlledRef } from '@/types'
-import { useCallback, useMemo, useRef } from 'react'
+import { useCallback, useMemo, useRef, useState } from 'react'
 
 export const useUserOverViewActions = (userId: string) => {
-  const { getCurrentUser } = useUserService()
+  const [isLoading, setIsLoading] = useState(false)
+  const { getCurrentUser, reportUserMutation } = useUserService()
   const currentUser = getCurrentUser()
   const editUserInfoFormRef = useRef<BaseControlledRef>(null)
 
@@ -19,11 +20,23 @@ export const useUserOverViewActions = (userId: string) => {
     /** TODO: GO TO CHAT */
   }, [])
 
-  const onReportUser = useCallback((userId: string) => {
-    /** TODO: REPORT USER */
-  }, [])
+  const onReportUser = useCallback(
+    (userId: string) => {
+      setIsLoading(true)
+      reportUserMutation.mutate(userId, {
+        onError: (error: any) => {
+          console.log('🚀 ~ ', error)
+        },
+        onSettled: () => {
+          setIsLoading(false)
+        }
+      })
+    },
+    [reportUserMutation]
+  )
 
   return {
+    isLoading,
     currentUser,
     isMe,
     editUserInfoFormRef,

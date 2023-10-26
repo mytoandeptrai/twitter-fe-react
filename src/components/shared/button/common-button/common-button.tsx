@@ -33,6 +33,6 @@ const StyledRoot = styled.button`
 
   &:disabled {
     cursor: initial;
-    background: var(--gray-4);
+    opacity: 0.5;
   }
 `

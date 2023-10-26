@@ -15,7 +15,6 @@ export const useUserService = () => {
     (userId?: string) => {
       queryClient.invalidateQueries([EUserQuery.GetMe])
       queryClient.invalidateQueries([EUserQuery.GetPopularUser])
-      queryClient.invalidateQueries([EUserQuery.GetUser])
 
       if (userId) queryClient.invalidateQueries([EUserQuery.GetUser, userId])
     },
@@ -109,9 +108,21 @@ export const useUserService = () => {
     }
   }
 
+  const reportUser = async (userId: string): Promise<IUser | void> => {
+    try {
+      const url = `${EEndpoints.User}/report/${userId}`
+      const response = await axiosClient.patch(url)
+      invalidateQueriesAfterSuccess(userId)
+      return response?.data
+    } catch (error: any) {
+      throw error?.response?.data
+    }
+  }
+
   const followUserMutation = useMutation([EUserQuery.FollowUser], followUser)
   const unFollowUserMutation = useMutation([EUserQuery.UnFollowUser], unFollowUser)
   const updateUserMutation = useMutation([EUserQuery.UpdateUser], updateUser)
+  const reportUserMutation = useMutation([EUserQuery.ReportUser], reportUser)
 
   return {
     validateUser,
@@ -124,6 +135,7 @@ export const useUserService = () => {
 
     followUserMutation,
     unFollowUserMutation,
-    updateUserMutation
+    updateUserMutation,
+    reportUserMutation
   }
 }

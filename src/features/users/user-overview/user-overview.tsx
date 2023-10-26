@@ -18,7 +18,7 @@ type Props = {
 
 const UserOverview = ({ user, isLoading }: Props) => {
   const { t } = useTranslation()
-  const { currentUser, isMe, onUpdateAvatar } = useUserOverView(user)
+  const { isMe, onUpdateAvatar } = useUserOverView(user)
 
   const renderUserOverviewSkeleton = () => {
     if (isLoading) {
@@ -51,8 +51,8 @@ const UserOverview = ({ user, isLoading }: Props) => {
   }
 
   const renderUserOverviewActions = () => {
-    if (currentUser?._id) {
-      return <UserOverViewActions userId={currentUser._id} />
+    if (user?._id) {
+      return <UserOverViewActions userId={user._id} />
     }
 
     return null

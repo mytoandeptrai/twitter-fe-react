@@ -3,6 +3,7 @@ import { EThemes } from '@/constants'
 import { ELanguage, TAppState } from '@/types'
 
 const appInitialState: TAppState = {
+  socket: null,
   theme: EThemes.LIGHT,
   language: ELanguage.En,
   loading: {
@@ -27,9 +28,12 @@ export const appSlice = createSlice({
     },
     setGlobalLoading: (state, action) => {
       state.loading = action.payload
+    },
+    setSocket: (state, action) => {
+      state.socket = action.payload
     }
   }
 })
 
-export const { setTheme, setLanguage, setGlobalLoading } = appSlice.actions
+export const { setTheme, setLanguage, setGlobalLoading, setSocket } = appSlice.actions
 export default appSlice.reducer

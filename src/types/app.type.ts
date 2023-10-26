@@ -1,6 +1,7 @@
 import { APP_DISPATCH_ACTIONS, EMedia, EThemes } from '@/constants'
 import { IModalProps } from './modal.type'
 import { AnimatePresenceProps } from 'framer-motion'
+import { Socket } from 'socket.io-client'
 
 export type TScreenSize = 'DESKTOP' | 'TABLET' | 'MOBILE'
 
@@ -30,6 +31,7 @@ export type TAppAction =
     }
 
 export type TAppState = {
+  socket: Socket | null
   loading: TLoading
   theme: EThemes
   language: ELanguage
