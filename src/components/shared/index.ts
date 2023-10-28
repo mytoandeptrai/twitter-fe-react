@@ -5,27 +5,28 @@ import { Loader } from './loader'
 import { Loading } from './loading'
 import { AudienceSelector, GenderSelector, StoryActionSelector, TweetActionSelector } from './selectors'
 import { PageMetaData } from './seo'
-import { StyledContainer, StyledFlex, StyledShake, StyledSpin } from './style'
+import { StyledBoundUpDown, StyledContainer, StyledFlex, StyledShake, StyledSpin } from './style'
 
 export {
   AudienceSelector,
   BaseSelector,
   CommonButton,
+  ControlledInput,
+  Dropdown,
   FileInput,
   GenderSelector,
   ImageWithPlaceHolder,
+  ImageWithUpload,
   LinkTextArea,
   Loader,
   Loading,
   PageMetaData,
+  StoryActionSelector,
+  StyledBoundUpDown,
   StyledContainer,
   StyledFlex,
   StyledShake,
   StyledSpin,
-  UncontrolledInput,
   TweetActionSelector,
-  ControlledInput,
-  Dropdown,
-  StoryActionSelector,
-  ImageWithUpload
+  UncontrolledInput
 }

@@ -9,10 +9,11 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
   invalid?: boolean
   filter?: RegExp | undefined
   label?: string
+  customStyles?: string
 }
 
 const UncontrolledInput = forwardRef<HTMLInputElement, Props>(
-  ({ icon: Icon = undefined, filter = undefined, label, ...otherProps }, ref) => {
+  ({ icon: Icon = undefined, filter = undefined, label, customStyles = '', ...otherProps }, ref) => {
     const [value, setValue] = useState<any>('')
 
     const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -24,7 +25,7 @@ const UncontrolledInput = forwardRef<HTMLInputElement, Props>(
         <StyledLabel>
           {label} {Icon}
         </StyledLabel>
-        <StyledInput value={value} {...otherProps} onChange={onChange} ref={ref} />
+        <StyledInput value={value} {...otherProps} onChange={onChange} ref={ref} customStyles={customStyles} />
       </StyledRoot>
     )
   }
@@ -49,11 +50,15 @@ const StyledLabel = styled.label`
   align-items: center;
 `
 
-const StyledInput = styled.input`
+const StyledInput = styled('input')<{
+  customStyles?: string
+}>`
   padding: 1rem;
   border: 1px solid ${({ theme }) => theme.borderColor1};
   border-radius: 0.5rem;
   font-size: 1.3rem;
   width: 100%;
   color: ${({ theme }) => theme.textColor};
+
+  ${({ customStyles }) => customStyles}
 `

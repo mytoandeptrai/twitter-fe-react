@@ -8,14 +8,14 @@ import { MyEmojiPicker } from './my-emoji-picker'
 import { LeftSelectableSideBar } from './sidebar'
 
 export {
-  MediaCard,
   CommonModal,
   ExternalPreviewLink,
+  FollowButton,
   IconLink,
   LeftSelectableSideBar,
   LoginButton,
-  FollowButton,
   Logo,
+  MediaCard,
   MediaViewer,
   MyEmojiPicker,
   SmallAvatar

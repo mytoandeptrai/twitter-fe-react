@@ -10,6 +10,7 @@ const TweetDetail = React.lazy(() => import('@/pages/tweet-detail'))
 const Explore = React.lazy(() => import('@/pages/explore'))
 const Bookmark = React.lazy(() => import('@/pages/bookmark'))
 const Profile = React.lazy(() => import('@/pages/profile'))
+const Chat = React.lazy(() => import('@/pages/chat'))
 
 interface RoutesType {
   path: string
@@ -28,6 +29,7 @@ const ROUTES_PATH = {
   profile: '/profile',
   hashTags: '/hashtag',
   tweet: '/tweet',
+  chat: '/chat',
   story: {
     create: '/story/create',
     view: '/story/view'
@@ -93,6 +95,11 @@ const routes: RoutesType[] = [
   {
     path: `${ROUTES_PATH.profile}/:userId`,
     Element: Profile,
+    isLazy: true
+  },
+  {
+    path: `${ROUTES_PATH.chat}/:roomId`,
+    Element: Chat,
     isLazy: true
   }
 ]

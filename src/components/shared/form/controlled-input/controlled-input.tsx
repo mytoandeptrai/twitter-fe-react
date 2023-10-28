@@ -10,10 +10,11 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
   filter?: RegExp | undefined
   label?: string
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void
+  customStyles?: string
 }
 
 const ControlledInput = forwardRef<HTMLInputElement, Props>(
-  ({ icon = undefined, filter = undefined, label, onChange, ...otherProps }, ref) => {
+  ({ icon = undefined, filter = undefined, label, onChange, customStyles = '', ...otherProps }, ref) => {
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
       if (!filter || (event?.target?.value && filter.test(event.target.value))) {
         onChange && onChange(event)
@@ -25,7 +26,7 @@ const ControlledInput = forwardRef<HTMLInputElement, Props>(
         <label>{label}</label>
         <div>
           {icon && <div>{icon}</div>}
-          <StyledInput {...otherProps} onChange={handleChange} ref={ref} />
+          <StyledInput {...otherProps} onChange={handleChange} ref={ref} customStyles={customStyles} />
         </div>
       </StyledRoot>
     )
@@ -40,7 +41,9 @@ const StyledRoot = styled.div`
   width: 100%;
 `
 
-const StyledInput = styled.input`
+const StyledInput = styled('input')<{
+  customStyles?: string
+}>`
   padding: 1rem;
   border: 1px solid var(--gray-4);
   border-radius: 0.5rem;
@@ -52,4 +55,6 @@ const StyledInput = styled.input`
   &:disabled {
     cursor: not-allowed;
   }
+
+  ${({ customStyles }) => customStyles}
 `

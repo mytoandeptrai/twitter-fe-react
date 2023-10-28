@@ -1,11 +1,15 @@
 import { configureStore } from '@reduxjs/toolkit'
 import appSlice from './app/app.slice'
 import userSlice from './user/user.slice'
+import roomSlice from './room/room.slice'
+import messageSlice from './message/message.slice'
 
 export const store = configureStore({
   reducer: {
     appState: appSlice,
-    userState: userSlice
+    userState: userSlice,
+    roomState: roomSlice,
+    messageState: messageSlice
   }
 })
 

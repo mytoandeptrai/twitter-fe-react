@@ -213,7 +213,7 @@ const StyledCancelButton = styled.button`
 
   &:disabled {
     cursor: initial;
-    background: var(--red);
+    background: #eb5757;
   }
 `
 
@@ -239,6 +239,6 @@ const StyledDeleteSelectionButton = styled.button`
 
   &:disabled {
     cursor: initial;
-    background: var(--red);
+    background: #eb5757;
   }
 `

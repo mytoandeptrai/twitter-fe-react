@@ -13,6 +13,9 @@ export interface IModalProps {
   okText?: React.ReactNode
   header?: React.ReactNode
   cancelText?: React.ReactNode
+  isOpen?: boolean
+  disabledOk?: boolean
+  disabledCancel?: boolean
 
   customHeaderStyles?: string
   customRootStyles?: string
@@ -29,6 +32,9 @@ const CommonModal = (props: IModalProps, ref: Ref<BaseControlledRef>): JSX.Eleme
     okText,
     zIndex,
     cancelText,
+    isOpen = false,
+    disabledOk = false,
+    disabledCancel = false,
 
     onOk,
     onCancel,
@@ -84,8 +90,12 @@ const CommonModal = (props: IModalProps, ref: Ref<BaseControlledRef>): JSX.Eleme
           <StyledBody>{body}</StyledBody>
           {onOk && onCancel && (
             <StyledFooter>
-              <CommonButton onClick={onOk}>{okText || 'OK'}</CommonButton>
-              <StyledCancelButton onClick={onDismiss}>{cancelText || 'Cancel'}</StyledCancelButton>
+              <CommonButton onClick={onOk} disabled={disabledOk}>
+                {okText || 'OK'}
+              </CommonButton>
+              <StyledCancelButton onClick={onDismiss} disabled={disabledCancel}>
+                {cancelText || 'Cancel'}
+              </StyledCancelButton>
             </StyledFooter>
           )}
         </StyledMainContent>
@@ -93,7 +103,7 @@ const CommonModal = (props: IModalProps, ref: Ref<BaseControlledRef>): JSX.Eleme
     )
   }
 
-  return <NewAnimatePresence>{renderModal(visible)}</NewAnimatePresence>
+  return <NewAnimatePresence>{renderModal(isOpen || visible)}</NewAnimatePresence>
 }
 
 export default memo(forwardRef(CommonModal))
@@ -156,9 +166,14 @@ export const StyledFooter = styled.div`
 `
 
 export const StyledCancelButton = styled.button`
-  background: var(--red);
+  background: #eb5757;
   color: #fff;
   font-weight: ${EFontWeight.FontWeight500};
   border-radius: 5px;
   padding: 0.5rem 2rem;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: initial;
+  }
 `

@@ -71,5 +71,5 @@ const TweetNotFound = styled.div`
   justify-content: center;
   font-size: 2rem;
   font-weight: 500;
-  color: var(--red);
+  color: #eb5757;
 `

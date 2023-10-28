@@ -9,11 +9,12 @@ import { ThemeProvider } from 'styled-components'
 import { useSocket } from './socket'
 
 const CommonModal = React.lazy(() => import('@/components/ui/modal/common-modal/common-modal'))
+const GroupChatCreateModal = React.lazy(() => import('@/features/chat/group-chat-create-modal/group-chat-create-modal'))
 
 function App() {
   // eslint-disable-next-line no-empty-pattern
   const {} = useSocket()
-  const { isLoadingUser } = useApp()
+  const { isLoadingUser, modal } = useApp()
   const { theme } = useMyTheme()
 
   let content = null
@@ -51,7 +52,7 @@ function App() {
     )
   }
 
-  const renderModal = () => {
+  const renderCommonModal = () => {
     return (
       <Suspense fallback={<Loader />}>
         <CommonModal />
@@ -59,11 +60,32 @@ function App() {
     )
   }
 
+  const renderGroupChatCreateModal = () => {
+    if (modal.visible) {
+      return (
+        <Suspense fallback={<Loader />}>
+          <GroupChatCreateModal />
+        </Suspense>
+      )
+    }
+
+    return null
+  }
+
+  const renderModals = () => {
+    return (
+      <React.Fragment>
+        {renderGroupChatCreateModal()}
+        {renderCommonModal()}
+      </React.Fragment>
+    )
+  }
+
   return (
     <React.Fragment>
       <ThemeProvider theme={theme}>
         <Loading />
-        {renderModal()}
+        {renderModals()}
         {content}
       </ThemeProvider>
     </React.Fragment>

@@ -13,6 +13,10 @@ const appInitialState: TAppState = {
   modal: {
     visible: false,
     props: null
+  },
+  modalGroupChat: {
+    visible: false,
+    props: null
   }
 }
 
@@ -31,9 +35,12 @@ export const appSlice = createSlice({
     },
     setSocket: (state, action) => {
       state.socket = action.payload
+    },
+    setModal: (state, action) => {
+      state.modal = action.payload
     }
   }
 })
 
-export const { setTheme, setLanguage, setGlobalLoading, setSocket } = appSlice.actions
+export const { setTheme, setLanguage, setGlobalLoading, setSocket, setModal } = appSlice.actions
 export default appSlice.reducer

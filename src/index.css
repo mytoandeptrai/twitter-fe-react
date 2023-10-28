@@ -63,3 +63,16 @@ input[type='file'] {
 .infinite-scroll-component {
   overflow: initial !important;
 }
+
+::-webkit-scrollbar {
+  width: 1.5rem;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+  background-image: linear-gradient(-45deg, #6a5af9, #3532c6);
+  border-radius: 50px;
+}

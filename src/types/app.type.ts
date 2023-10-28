@@ -36,6 +36,7 @@ export type TAppState = {
   theme: EThemes
   language: ELanguage
   modal: TModalAppState
+  modalGroupChat: TModalAppState
 }
 
 export type TAppDispatch = (action: TAppAction) => void

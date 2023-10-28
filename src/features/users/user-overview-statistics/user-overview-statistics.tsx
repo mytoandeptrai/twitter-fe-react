@@ -41,11 +41,11 @@ const UserOverViewStatistics = ({ user }: Props) => {
 
     return (
       <React.Fragment>
-        <StyledButton onClick={() => showUserListModal(EUserListType.Followed)}>
+        <StyledButton onClick={() => showUserListModal(EUserListType.Followed)} disabled={followingUsers === 0}>
           <span>{nFormatter(followingUsers)}</span>
           {t('common.text.following')}
         </StyledButton>
-        <StyledButton onClick={() => showUserListModal(EUserListType.Following)}>
+        <StyledButton onClick={() => showUserListModal(EUserListType.Following)} disabled={followersUsers === 0}>
           <span>{nFormatter(followersUsers)}</span>
           {t('common.text.followers')}
         </StyledButton>
@@ -74,5 +74,10 @@ const StyledButton = styled.button`
     font-weight: ${EFontWeight.FontWeight600};
     color: ${({ theme }) => theme.textColor1};
     margin-right: 0.5rem;
+  }
+
+  &:disabled {
+    cursor: initial;
+    opacity: 0.7;
   }
 `

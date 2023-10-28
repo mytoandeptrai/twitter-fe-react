@@ -8,5 +8,6 @@ export enum EEndpoints {
   Search = 'search',
   LinkPreview = 'link-preview',
   Comment = 'comment',
-  Notification = 'notification'
+  Notification = 'notification',
+  Room = 'room'
 }

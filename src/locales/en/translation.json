@@ -25,7 +25,8 @@
       "unFollow": "UnFollow",
       "edit": "Edit",
       "sendMessage": "Send Message",
-      "reportUser": "Report this user"
+      "reportUser": "Report this user",
+      "createNewGroupChat": "Create New Group Chat"
     },
     "text": {
       "doNotHaveAnAccount": "Don't have an account?",
@@ -130,6 +131,20 @@
       "text": {
         "viewAllNotification": "Click to view all notifications",
         "readAllNotification": "Read all notifications"
+      }
+    },
+    "chat": {
+      "text": {
+        "contact": "Contact",
+        "noChattingRoom": "There is no chatting room available",
+        "addNewMembers": "Add new members",
+        "createNewGroupChat": "Create New Group Chat",
+        "groupChatName": "Group Chat Name",
+        "groupChatDescription": "Group Chat Description",
+        "roomImage": "Image of the room",
+        "search": "Search",
+        "searchInput": "Searching your people...",
+        "addRoomMember": "Add new members to room"
       }
     }
   }

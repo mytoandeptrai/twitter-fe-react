@@ -3,7 +3,6 @@ import { useNotificationService, useUserService } from '@/services'
 import { INotification, IUser } from '@/types'
 import React, { memo, useCallback, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useNavigate } from 'react-router-dom'
 import { ClipLoader } from 'react-spinners'
 import { styled } from 'styled-components'
 
@@ -13,7 +12,6 @@ type Props = {
 
 const NotificationAction = ({ notifications }: Props) => {
   const { t } = useTranslation()
-  const navigate = useNavigate()
   const [isLoading, setIsLoading] = useState(false)
 
   const { getCurrentUser } = useUserService()
