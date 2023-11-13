@@ -18,6 +18,7 @@ export const useApp = () => {
   const queryClient = useQueryClient()
   const { createNotificationMutation } = useNotificationService()
   const modal = useSelector((state: RootState) => state.appState.modal)
+  const socket = useSelector((state: RootState) => state.appState.socket)
   const [accessToken, setAccessToken] = useLocalStorage(ELocalStorageKey.AccessToken, '')
 
   const getMeQuery = useQuery<IUser | undefined>([EUserQuery.GetMe], getMe, {
@@ -58,7 +59,13 @@ export const useApp = () => {
       }
 
       if (event.type === EventBusName.CreateNotification) {
-        createNotificationMutation.mutate(event.payload)
+        createNotificationMutation.mutate(event.payload, {
+          onSuccess: (data) => {
+            if (data && socket) {
+              socket.emit('createNotification', data)
+            }
+          }
+        })
       }
     })
   }

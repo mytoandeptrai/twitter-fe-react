@@ -5,6 +5,7 @@ import { Loader } from './loader'
 import { Loading } from './loading'
 import { AudienceSelector, GenderSelector, StoryActionSelector, TweetActionSelector } from './selectors'
 import { PageMetaData } from './seo'
+import { CommonSpinner } from './spinners'
 import { StyledBoundUpDown, StyledContainer, StyledFlex, StyledShake, StyledSpin } from './style'
 
 export {
@@ -28,5 +29,6 @@ export {
   StyledShake,
   StyledSpin,
   TweetActionSelector,
-  UncontrolledInput
+  UncontrolledInput,
+  CommonSpinner
 }

@@ -1,5 +1,6 @@
 export * from './chat'
 export * from './comments'
+export * from './messages'
 export * from './notifications'
 export * from './popular'
 export * from './profiles'

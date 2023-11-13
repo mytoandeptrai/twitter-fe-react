@@ -6,6 +6,8 @@ import { HiOutlineEmojiHappy } from 'react-icons/hi'
 import './my-emoji-picker.css'
 type Props = {
   onEmojiClick: (data: string) => void
+  customStyles?: string
+  isWhiteColor?: boolean
 }
 
 const MyEmojiPicker = (props: Props) => {
@@ -33,7 +35,11 @@ const MyEmojiPicker = (props: Props) => {
 
   return (
     <StyledRoot ref={ref}>
-      {visible && <StyledEmojiWrapper visible={visible}>{emoji}</StyledEmojiWrapper>}
+      {visible && (
+        <StyledEmojiWrapper visible={visible} customStyles={props.customStyles ?? ''}>
+          {emoji}
+        </StyledEmojiWrapper>
+      )}
       <StyledButton onClick={toggle} type='button'>
         <HiOutlineEmojiHappy />
       </StyledButton>
@@ -49,11 +55,14 @@ const StyledRoot = styled.div`
 
 const StyledEmojiWrapper = styled.div<{
   visible: boolean
+  customStyles: string
 }>`
   transition: opacity 0.2s ease-in-out;
   position: absolute;
   z-index: 3;
   transform: translateY(20px);
+
+  ${({ customStyles }) => customStyles}
 `
 
 const StyledButton = styled.button`

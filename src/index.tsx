@@ -26,24 +26,22 @@ const root = ReactDOM.createRoot(container)
 const queryClient = new QueryClient()
 
 root.render(
-  <React.StrictMode>
-    <Suspense fallback={<div>Loading...</div>}>
-      <BrowserRouter>
-        <AppProvider>
-          <RecoilRoot>
-            <HelmetProvider>
-              <Provider store={store}>
-                <QueryClientProvider client={queryClient} contextSharing={true}>
-                  <App />
-                  <ReactQueryDevtools initialIsOpen={false} />
-                </QueryClientProvider>
-              </Provider>
-            </HelmetProvider>
-          </RecoilRoot>
-        </AppProvider>
-      </BrowserRouter>
-    </Suspense>
-  </React.StrictMode>
+  <Suspense fallback={<div>Loading...</div>}>
+    <BrowserRouter>
+      <AppProvider>
+        <RecoilRoot>
+          <HelmetProvider>
+            <Provider store={store}>
+              <QueryClientProvider client={queryClient} contextSharing={true}>
+                <App />
+                <ReactQueryDevtools initialIsOpen={false} />
+              </QueryClientProvider>
+            </Provider>
+          </HelmetProvider>
+        </RecoilRoot>
+      </AppProvider>
+    </BrowserRouter>
+  </Suspense>
 )
 
 // If you want to start measuring performance in your app, pass a function

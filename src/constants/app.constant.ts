@@ -70,3 +70,8 @@ export const MASONRY_CONFIG_BREAKPOINTS = {
   700: 2,
   500: 1
 }
+
+export const DEFAULT_LIST_RESPONSE = {
+  data: [],
+  total: 0
+}

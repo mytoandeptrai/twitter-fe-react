@@ -118,3 +118,8 @@ export type ISelectableSideBar<T> = {
   icon?: JSX.Element
   value: T
 }
+
+export interface IDefaultListResponse {
+  data: never[]
+  total: number
+}

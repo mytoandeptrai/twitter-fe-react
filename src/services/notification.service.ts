@@ -49,11 +49,25 @@ export const useNotificationService = () => {
     }
   }
 
+  const spawnNotification = (body: any, icon: any, url: any, title: any) => {
+    const options = {
+      body,
+      icon
+    }
+    const n = new Notification(title, options)
+
+    n.onclick = (e) => {
+      e.preventDefault()
+      window.open(url, '_blank')
+    }
+  }
+
   return {
     getNotificationList,
     readNotification,
     createNotification,
     markAsReadHandler,
+    spawnNotification,
 
     createNotificationMutation,
     readNotificationMutation

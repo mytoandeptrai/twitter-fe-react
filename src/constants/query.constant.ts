@@ -61,3 +61,7 @@ export enum ECommentQuery {
   CreateComment = 'CreateComment',
   ReactComment = 'ReactComment'
 }
+
+export enum EMessageQuery {
+  GetMessagesByRoomId = 'GetMessagesByRoomId'
+}

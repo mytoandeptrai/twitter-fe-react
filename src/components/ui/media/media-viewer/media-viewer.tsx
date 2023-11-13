@@ -1,7 +1,7 @@
 import { EMedia } from '@/constants'
 import { useToggle } from '@/hooks'
 import { IMedia } from '@/types'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { css, styled } from 'styled-components'
 import Lightbox from 'react-image-lightbox'
 
@@ -12,6 +12,15 @@ type Props = {
 
 const MediaViewer = ({ data, hasLightBox = false }: Props) => {
   const { hide, show, visible } = useToggle()
+
+  useEffect(() => {
+    const visibleValue = visible ? 'hidden' : 'auto'
+    document.body.style.overflow = visibleValue
+
+    return () => {
+      document.body.style.overflow = 'auto'
+    }
+  }, [visible])
 
   const generateContent = () => {
     let content = <React.Fragment></React.Fragment>

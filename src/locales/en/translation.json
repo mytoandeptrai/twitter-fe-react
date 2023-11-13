@@ -134,6 +134,7 @@
       }
     },
     "chat": {
+      "title": "Chatting with your friends",
       "text": {
         "contact": "Contact",
         "noChattingRoom": "There is no chatting room available",

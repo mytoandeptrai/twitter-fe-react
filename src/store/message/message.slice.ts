@@ -26,6 +26,7 @@ export const messageSlice = createSlice({
 })
 
 const selectMessagesState = (state: RootState) => state.messageState.messages
+export const selectNewMessageState = (state: RootState) => state.messageState.newMessage
 
 export const getMessagesInRoom = (roomId: string) => {
   return createSelector(selectMessagesState, (messagesState) => messagesState?.[roomId] || [])

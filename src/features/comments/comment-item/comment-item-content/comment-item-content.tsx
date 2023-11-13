@@ -32,6 +32,7 @@ const CommentItemContent = ({ comment }: Props) => {
               url: commentMedia,
               type: commentMedia.includes(EMedia.Image) ? EMedia.Image : EMedia.Video
             }}
+            hasLightBox
           />
         </StyledMediaWrapper>
       )

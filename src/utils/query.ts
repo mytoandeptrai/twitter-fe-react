@@ -2,6 +2,7 @@ import { axiosClient } from '@/apis'
 import { DEFAULT_LIST_LIMIT, SORT_STALE_TIME } from '@/constants'
 import {
   IGetList,
+  IMessage,
   IPaginationParams,
   IQueryInfinityListParams,
   IQueryPageInfinityParams,
@@ -52,4 +53,48 @@ const flattenInfinityList = <T>(data: IQueryInfinityListParams<T>): T[] => {
   return data?.pages?.reduce((res: T[], curr: IQueryPageInfinityParams<T>) => [...res, ...curr.data], [])
 }
 
-export { getList, generateInfinityQueryListConfig, getPaginationFromInput, flattenInfinityList }
+const flattenInfinityMessageList = (
+  data: IQueryInfinityListParams<IMessage>
+): {
+  images: string[]
+  convertedData: IMessage[]
+} => {
+  if (!data || data?.pages?.length === 0) {
+    return {
+      convertedData: [],
+      images: []
+    }
+  }
+
+  const images: string[] = []
+
+  const convertedData = data?.pages
+    ?.reduce((res: IMessage[], curr: IQueryPageInfinityParams<IMessage>) => {
+      const pageMessages = curr?.data
+      if (pageMessages && !!pageMessages.length) {
+        pageMessages.forEach((message: IMessage) => {
+          if (message.file && message.file.includes('.jpg')) {
+            images.push(message.file)
+          }
+        })
+
+        return [...res, ...curr?.data]
+      }
+
+      return res
+    }, [])
+    .reverse()
+
+  return {
+    convertedData,
+    images
+  }
+}
+
+export {
+  getList,
+  generateInfinityQueryListConfig,
+  getPaginationFromInput,
+  flattenInfinityList,
+  flattenInfinityMessageList
+}

@@ -10,7 +10,8 @@ export const store = configureStore({
     userState: userSlice,
     roomState: roomSlice,
     messageState: messageSlice
-  }
+  },
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware({ serializableCheck: false })
 })
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
