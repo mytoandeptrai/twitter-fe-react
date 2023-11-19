@@ -157,3 +157,16 @@ export const queryStringToObject = (qs: string, options = {}) => {
     ...options
   })
 }
+
+export const convertDataToHTML = (text: string) => {
+  const urlRegex = /(https?:\/\/[^\s]+)/g
+  return text.replace(urlRegex, '<a href="$1" target="_blank">$1</a>')
+}
+
+export const debounceFunction = (fn: Function, ms = 300) => {
+  let timeoutId: ReturnType<typeof setTimeout>
+  return function (this: any, ...args: any[]) {
+    clearTimeout(timeoutId)
+    timeoutId = setTimeout(() => fn.apply(this, args), ms)
+  }
+}

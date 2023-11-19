@@ -1,5 +1,5 @@
 import { IMessage } from '@/types'
-import React from 'react'
+import React, { memo } from 'react'
 import { useChatContentMain } from './hook'
 import styled from 'styled-components'
 import { ImageMessageForm, MessageContent, TextMessageForm } from '@/features'
@@ -14,6 +14,7 @@ type Props = {
   messages: IMessage[]
   messageImage: IMessageImage
   hasMore: boolean
+  currentUserId: string
   onCloseImageMessageForm: () => void
   onSubmit: (e: any) => void
   onFetchNextPage: () => void
@@ -26,6 +27,7 @@ const ChatContentMain = (props: Props) => {
     messageImage,
     messages,
     hasMore,
+    currentUserId,
 
     onSubmit,
     onChangeInputMessage,
@@ -42,8 +44,8 @@ const ChatContentMain = (props: Props) => {
           onChangeInputMessage={onChangeInputMessage}
           onCancel={onCloseImageMessageForm}
           onSubmit={(e) => {
-            onSubmit(e)
             onChangeShouldJumpToEnd(true)
+            onSubmit(e)
           }}
         />
       )
@@ -58,7 +60,13 @@ const ChatContentMain = (props: Props) => {
         <React.Fragment>
           {messages?.map((ms) => {
             if (ms?.author?._id) {
-              return <MessageContent key={`message-${ms?._id}`} />
+              return (
+                <MessageContent
+                  key={`message-${ms?._id}`}
+                  message={ms}
+                  isMyMessage={ms?.author?._id === currentUserId}
+                />
+              )
             }
 
             return null
@@ -74,7 +82,10 @@ const ChatContentMain = (props: Props) => {
       <TextMessageForm
         onChangeInputMessage={onChangeInputMessage}
         onChangeInputFile={onChangeInputFile}
-        onSubmit={onSubmit}
+        onSubmit={(e) => {
+          onChangeShouldJumpToEnd(true)
+          onSubmit(e)
+        }}
         value={messageImage.messageText}
       />
     )
@@ -100,7 +111,7 @@ const ChatContentMain = (props: Props) => {
   )
 }
 
-export default ChatContentMain
+export default memo(ChatContentMain)
 
 const StyledRoot = styled.section`
   padding-bottom: 2.5rem;

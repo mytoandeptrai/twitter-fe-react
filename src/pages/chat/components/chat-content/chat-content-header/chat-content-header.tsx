@@ -1,6 +1,6 @@
 import { ImageWithPlaceHolder } from '@/components'
 import { IRoom, IUser } from '@/types'
-import React from 'react'
+import React, { memo } from 'react'
 import { IoCallSharp } from 'react-icons/io5'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
@@ -54,7 +54,7 @@ const ChatContentHeader = ({ guest, room, roomInfos, triggerCall }: Props) => {
   )
 }
 
-export default ChatContentHeader
+export default memo(ChatContentHeader)
 
 const StyledRoot = styled.section`
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
@@ -68,6 +68,10 @@ const StyledContent = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 0 2rem;
+
+  @media (max-width: 1024px) {
+    justify-content: center;
+  }
 `
 
 const StyledLeftSidebar = styled.div`

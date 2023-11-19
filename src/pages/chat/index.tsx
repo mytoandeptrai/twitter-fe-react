@@ -17,8 +17,8 @@ const ChatPage = () => {
     hasMore,
     isLoading,
     isShowMemberList,
-    totalRecords,
     roomInfos,
+    currentUser,
 
     fetchNextPage,
     onSubmitForm,
@@ -43,7 +43,14 @@ const ChatPage = () => {
       {renderLoading()}
       <LayoutChattingTwoSideBar
         leftSideBar={<ChatLeftSidebar onOpenCreateNewGroupChatModal={onOpenCreateNewGroupChatModal} />}
-        rightSideBar={<ChatRightSidebar />}
+        rightSideBar={
+          <ChatRightSidebar
+            guest={guest}
+            room={room}
+            chatImages={images}
+            onChangeShowMemberList={onChangeShowMemberList}
+          />
+        }
         content={
           <React.Fragment>
             <ChatContentHeader guest={guest} room={room} roomInfos={roomInfos} />
@@ -51,10 +58,9 @@ const ChatPage = () => {
               hasMore={hasMore}
               messages={convertedData}
               messageImage={messageImage}
+              currentUserId={currentUser?._id ?? ''}
               onCloseImageMessageForm={onCloseImageMessageForm}
-              onFetchNextPage={() => {
-                console.log('file vao day')
-              }}
+              onFetchNextPage={fetchNextPage}
               onSubmit={onSubmitForm}
               onChangeInputMessage={onChangeInputMessage}
               onChangeInputFile={onChangeInputFile}

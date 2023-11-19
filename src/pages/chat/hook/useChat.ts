@@ -38,7 +38,7 @@ export const useChat = (roomId = '') => {
   const { getMessages } = useMessageService()
   const { uploadMedia } = useUploadService()
   const currentUser = getCurrentUser()
-  const { data, hasMore, isLoading, totalRecords, fetchNextPage } = useInfinityMessageList({
+  const { data, hasMore, isLoading, fetchNextPage } = useInfinityMessageList({
     queryKey: [EMessageQuery.GetMessagesByRoomId, roomId],
     queryFunction: getMessages(MESSAGE_LIST_LIMIT),
     queryConfig: {
@@ -155,8 +155,8 @@ export const useChat = (roomId = '') => {
     hasMore,
     isLoading,
     isShowMemberList,
-    totalRecords,
     roomInfos,
+    currentUser,
 
     fetchNextPage,
     onSubmitForm,

@@ -217,26 +217,6 @@ const StyledMediaItemEmoji = styled.div`
   }
 `
 
-const StyledMediaItemInput = styled.input`
-  display: inline-block !important;
-  opacity: 0;
-  z-index: 1;
-`
-
-const StyledMediaItemLabel = styled.label`
-  width: 100%;
-  height: 100%;
-  cursor: pointer;
-  z-index: -1;
-
-  svg {
-    width: 2rem !important;
-    height: 2rem !important;
-  }
-`
-
-const StyledMediaItemButton = styled.button``
-
 const StyledMicButton = styled.button`
   svg {
     --size: 2rem;
@@ -245,5 +225,3 @@ const StyledMicButton = styled.button`
     fill: #2f80ed;
   }
 `
-
-const StyledEmojiButton = styled.button``

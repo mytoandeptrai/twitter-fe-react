@@ -1,5 +1,5 @@
 import { useIntersectionObserver } from '@/hooks'
-import { IMessage, IRoom } from '@/types'
+import { IMessage } from '@/types'
 import { useCallback, useEffect, useRef, useState } from 'react'
 
 type IMessageImage = {
@@ -12,6 +12,7 @@ type Props = {
   messages: IMessage[]
   messageImage: IMessageImage
   hasMore: boolean
+  currentUserId: string
   onCloseImageMessageForm: () => void
   onSubmit: (e: any) => void
   onFetchNextPage: () => void
@@ -24,7 +25,6 @@ export const useChatContentMain = ({ messages, hasMore, onFetchNextPage }: Props
   const loadMoreRef = useRef() as React.RefObject<HTMLDivElement>
 
   const [shouldJumpToEnd, setShouldJumpToEnd] = useState(true)
-
   const onChangeShouldJumpToEnd = useCallback((newShouldJump: boolean) => setShouldJumpToEnd(newShouldJump), [])
 
   useEffect(() => {
